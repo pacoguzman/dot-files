@@ -1,6 +1,7 @@
 export PATH="/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/:$PATH"
 export PATH="/Library/PostgreSQL8/bin/:$PATH"     
-export PATH="/usr/local/mysql/bin/:$PATH"
+export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/pgsql/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export IRBRC="$HOME/.irbrc"
 
@@ -77,6 +78,13 @@ gemdoc() {
 _gemdocomplete() {
   COMPREPLY=($(compgen -W '$(`which ls` $GEMDIR/doc)' -- ${COMP_WORDS[COMP_CWORD]}))
   return 0
+}
+go() {
+  if [ -d ~/Sites/$1 ]; then 
+    cd ~/Sites/$1; 
+  else
+    echo "$1 is not a project."
+  fi
 }
 
 complete -o default -o nospace -F _gemdocomplete gemdoc
