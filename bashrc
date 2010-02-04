@@ -2,6 +2,7 @@ export PATH="/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/:$PA
 export PATH="/Library/PostgreSQL8/bin/:$PATH"     
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="/usr/local/pgsql/bin:$PATH"
+export PATH=$PATH:"/usr/local/mongodb/bin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export IRBRC="$HOME/.irbrc"
 
@@ -24,17 +25,22 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the colors
 
-export PS1='\h:\W \u$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")\$ '
+export PS1='\W$(__git_ps1 " \[${COLOR_RED}\](%s)\[${COLOR_NC}\]")⤿ '
 
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-export EDITOR='/usr/bin/mate -w -l1'
+export EDITOR='mate -w -l1'
 export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 # sets title of window to be user@host
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
 
+# fucking useful shit
+alias 2.3="mate ~/Sites/rails-2.3"
+alias mate='/usr/bin/mate'
+alias mvim='open -a /Applications/MacVim.app' 
+alias gpbm='git push banana master'
 alias ls='ls -G'
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
@@ -47,14 +53,16 @@ alias systail='tail -f /var/log/system.log'
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
 # rails stuff
-alias log='tail -f -0 ./log/*.log'
+alias l='lookup'
+alias log='tail -f -0 ./log/*.log &'
+alias stoplog='killall tail'
 alias ss='ruby ./script/server'
 alias sc='ruby ./script/console'
 alias cdm='cap deploy deploy:migrate'
 alias model='script/generate model'
 alias controller='script/generate controller'
 alias migration='script/generate migration'
-alias migrate='rake db:migrate'
+alias migrate='rake db:migrate && rake db:test:clone'
 alias rollback='rake db:rollback'
 alias dtp='rake db:test:prepare'
 alias redo="rake db:migrate && rake db:rollback"
@@ -63,12 +71,47 @@ alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
 alias sr='rake spec'
 alias rt='rake test'
 alias rf='rake features'
+alias restart='touch tmp/restart.txt'
+alias mong='mongrel_rails start'
+alias startpg='sudo su postgres'
+alias 1.9="rvm use 1.9"
+alias 1.8="rvm use default"
+alias t="rake test"
+alias s="rake spec"
+alias mrt="1.8 && rake test && 1.9 && rake test"
+alias mrs="1.8 && rake spec && 1.9 && rake spec"
+alias format-patch="git format-patch HEAD^1..HEAD"
 
+alias rms='rake merge:staging'
+alias start_mongo="screen -dmS mongo rake mongo:start"
 
+alias ambler="ssh getsalesonrails.com"
+alias dj="ssh docjockeyapp.com"
+
+alias pharmmd="cd ~/Sites/mocra/pharmmd"
 alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
 
 alias hidefile='/usr/bin/SetFile -a "V"'
 alias showfile='/usr/bin/SetFile -a "v"'
+alias brains='cd ~/Sites/railscamp/brains/'
+
+teleport() {
+  killall teleportd || true
+  screen -dm /Library/PreferencePanes/teleport.prefPane/Contents/Resources/teleportd.app/Contents/MacOS/teleportd
+  open ~/activate\ telefrag.app
+}
+ 
+alias qwerty="cd '/Users/ryanbigg/Library/Application Support/SIMBL/Plugins/Telefrag.bundle/Contents/Resources/' && rm -f Keymap.plist && teleport"
+alias colemak="cd '/Users/ryanbigg/Library/Application Support/SIMBL/Plugins/Telefrag.bundle/Contents/Resources/' && rm -f Keymap.plist && ln -s QWERTY_Colemak.plist Keymap.plist && teleport"
+alias colemap="colemak"
+alias dvorak="cd '/Users/ryanbigg/Library/Application Support/SIMBL/Plugins/Telefrag.bundle/Contents/Resources/' && rm -f Keymap.plist && ln -s QWERTY_Dvorak.plist Keymap.plist && teleport"
+
+soffice() {
+  cd /Applications/OpenOffice.org.app/Contents/program
+  killall soffice || true
+  screen -dm ./soffice -accept="socket,host=localhost,port=2002;urp" -norestore -headless -invisible -nofirststartwizard
+  cd -
+}
 
 # Gem Doc
 export GEMDIR=`gem env gemdir`
@@ -79,21 +122,36 @@ _gemdocomplete() {
   COMPREPLY=($(compgen -W '$(`which ls` $GEMDIR/doc)' -- ${COMP_WORDS[COMP_CWORD]}))
   return 0
 }
-go() {
-  if [ -d ~/Sites/$1 ]; then 
-    cd ~/Sites/$1; 
+# Side projects
+sp() {
+  if [ -d ~/Sites/side_projects/$1* ]; then 
+    cd ~/Sites/side_projects/$1*; 
+  else
+    # unset lookup_name
+    # lookup_name=echo $(fold -w1 <(echo $1)) | tr ' ' '*'
+    # echo $lookup_name
+    # if [ -d ~/Sites/side_projects/$lookup_name ]; then
+    #   cd ~/Sites/side_projects/*$lookup_name*;
+    # else
+      echo "$1 is not a project."
+    # fi
+  fi
+}
+
+# Mocra projects
+m() {
+  if [ -d ~/Sites/Mocra/$1* ]; then 
+    cd ~/Sites/Mocra/$1*; 
   else
     echo "$1 is not a project."
   fi
 }
-
 complete -o default -o nospace -F _gemdocomplete gemdoc
 complete -C ~/.rake-completion.rb -o default rake
 
 
 # readline settings
 bind "set completion-ignore-case on" 
-bind "set bell-style none" # No bell, because it's damn annoying
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
 # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
@@ -118,3 +176,4 @@ export HISTSIZE=10000
 shopt -s histappend
 
 alias h='history|g'
+if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
