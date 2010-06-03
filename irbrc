@@ -1,6 +1,7 @@
 # require 'wirble'
 require 'rubygems'
 require 'wirble'
+require 'looksee/shortcuts'
 
 Wirble.init(:history_size => 10000)
 Wirble.colorize

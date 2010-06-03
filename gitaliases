@@ -1,13 +1,15 @@
 # Dr Nic Compatibility Mode
 
 alias gst='git status'
-alias gl='git pull'
+alias gl='git pull --rebase'
+alias rails_im_back='gl && sudo rake gems:install && sudo rake gems:install RAILS_ENV=cucumber && migrate && rake spec cucumber:ok'
 alias gp='git push'
 alias gpa='git push-all' # see [alias] in ~/.gitconfig
 alias gd='git diff | mate'
 alias ga='git add'
 alias gcl='git config --list'
 alias gc='git commit -v'
+alias gcm='git checkout master'
 alias gca='git commit -v -a'
 alias gb='git branch'
 alias gbc='git branch --color'
@@ -15,6 +17,15 @@ alias gba='git branch -a'
 alias gco='git checkout'
 alias gdc='git-svn dcommit'
 alias gk='gitk --all &'
+alias grh='git reset HEAD'
+alias grhard='git reset --hard'
+
+function gpar() {
+  for remote in `git remote show`
+  do
+    `git push $remote --all -v`
+  done
+}
 
 alias gpatch='git diff master -p'
 # alias up='sake git:update' - need to priorities origin vs git-svn
