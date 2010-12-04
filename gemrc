@@ -1,10 +1,9 @@
 --- 
-:backtrace: false
-:benchmark: false
-:bulk_threshold: 1000
-:sources: 
-- http://gems.rubyforge.org/
-- http://gemcutter.org/
 :update_sources: true
-:verbose: true
 gem: --no-ri --no-rdoc
+:backtrace: false
+:verbose: true
+:bulk_threshold: 1000
+:benchmark: false
+:sources: 
+- http://production.s3.rubygems.org

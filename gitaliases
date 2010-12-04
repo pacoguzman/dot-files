@@ -5,6 +5,7 @@ alias gl='git pull --rebase'
 alias rails_im_back='gl && sudo rake gems:install && sudo rake gems:install RAILS_ENV=cucumber && migrate && rake spec cucumber:ok'
 alias gp='git push'
 alias gpa='git push-all' # see [alias] in ~/.gitconfig
+alias gap='git add -p'
 alias gd='git diff | mate'
 alias ga='git add'
 alias gcl='git config --list'
@@ -19,6 +20,9 @@ alias gdc='git-svn dcommit'
 alias gk='gitk --all &'
 alias grh='git reset HEAD'
 alias grhard='git reset --hard'
+
+alias good='git bisect good'
+alias bad='git bisect bad'
 
 function gpar() {
   for remote in `git remote show`
