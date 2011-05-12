@@ -82,6 +82,14 @@ alias mrt="1.8 && rake test && 1.9 && rake test"
 alias mrs="1.8 && rake spec && 1.9 && rake spec"
 alias format-patch="git format-patch HEAD^1..HEAD"
 
+alias ber="bundle exec rspec"
+alias bes="bundle exec spec"
+alias bec="bundle exec cucumber"
+alias be="bundle exec"
+
+alias 1.8.7="rvm use 1.8.7"
+alias 1.9.2="rvm use 1.9.2"
+
 alias rms='rake merge:staging'
 alias start_mongo="screen -dmS mongo rake mongo:start"
 
