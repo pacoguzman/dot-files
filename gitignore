@@ -8,7 +8,15 @@ pkg/*
 *.move1v3
 *~
 log/*
+nbproject/*
+pkg/*
 tmp/**/*
-exports
+.svn
+.bundle
 .idea
 .idea/*
+*.pdf
+*.tmproj
+*.zip
+.com.apple.*
+.*.sw?
