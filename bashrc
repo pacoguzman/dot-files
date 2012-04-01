@@ -1,5 +1,4 @@
 export PATH="/usr/local/bin:$PATH"
-export PATH="/Library/PostgreSQL8/bin/:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="/usr/local/pgsql/bin:$PATH"
 export PATH=$PATH:"/usr/local/mongodb/bin"
@@ -55,3 +54,6 @@ shopt -s histappend
 alias h='history|g'
 # Load RVM into a shell session *as a function*
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
+
+# RVM bash completion
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
