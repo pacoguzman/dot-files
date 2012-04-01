@@ -34,48 +34,7 @@ export EDITOR='vim'
 export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 # sets title of window to be user@host
-export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"' 
-
-alias mvim='open -a /Applications/MacVim.app' 
-alias ls='ls -G'
-alias ll='ls -lah'
-alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
-alias ...='.. ..'
-alias systail='tail -f /var/log/system.log'
-
-# rails stuff
-alias l='lookup'
-alias log='tail -f -0 ./log/*.log &'
-alias stoplog='killall tail'
-alias model='rails generate model'
-alias controller='rails generate controller'
-alias migration='rails generate migration'
-alias r='bundle exec rake'
-alias migrate='bundle exec rake db:migrate && bundle exec rake db:test:prepare'
-alias rollback='rake db:rollback'
-alias redo="rake db:migrate && rake db:rollback"
-alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
-alias restart='touch tmp/restart.txt'
-alias startpg='sudo su postgres'
-alias t="rake test"
-alias s="rake spec"
-alias raisl='rails'
-
-alias ber="bundle exec rspec"
-alias bes="bundle exec spec"
-alias bec="bundle exec cucumber"
-alias be="bundle exec"
-
-alias 1.8.7="rvm use 1.8.7"
-alias 1.9.2="rvm use 1.9.2"
-alias 1.9.3="rvm use 1.9.3"
-alias falcon="rvm use 1.9.3-falcon"
-
-alias def="ack 'def $1'"
-alias class="ack 'class $1'"
-alias module="ack 'module $1'"
-
-alias startpg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
+export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'
 
 complete -C ~/.rake-completion.rb -o default rake
 
@@ -94,4 +53,5 @@ export HISTSIZE=10000
 shopt -s histappend
 
 alias h='history|g'
+# Load RVM into a shell session *as a function*
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
