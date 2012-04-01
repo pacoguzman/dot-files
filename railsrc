@@ -1,0 +1,42 @@
+#!/usr/bin/ruby
+
+# activerecord logging methods very useful for digging into queries
+require 'logger'
+require 'activerecord' if rails?(2)
+
+def enable_logger
+  log_to(Logger.new(STDOUT))
+end
+
+def disable_logger
+  log_to(nil)
+end
+
+def log_to(logger)
+  ActiveRecord::Base.logger = logger
+  ActiveRecord::Base.clear_active_connections!
+end
+
+def log_notifications
+  $odd_or_even_queries = false
+  ActiveSupport::Notifications.subscribe('sql.active_record') do |*args|
+    $odd_or_even_queries = !$odd_or_even_queries
+    color = $odd_or_even_queries ? ANSI[:CYAN] : ANSI[:MAGENTA]
+    event = ActiveSupport::Notifications::Event.new(*args)
+    time  = "%.1fms" % event.duration
+    name  = event.payload[:name]
+    sql   = event.payload[:sql].gsub("\n", " ").squeeze(" ")
+    puts "  #{ANSI[:UNDERLINE]}#{color}#{name} (#{time})#{ANSI[:RESET]}  #{sql}"
+  end
+
+  ActiveSupport::Notifications.subscribe('request_event.couchrest') do |*args|
+    event = ActiveSupport::Notifications::Event.new(*args)
+    time  = "%.1fms" % event.duration
+    method  = event.payload[:method]
+    uri   = event.payload[:uri].gsub("\n", " ").squeeze(" ")
+    puts "  #{ANSI[:UNDERLINE]}#{ANSI[:GREEN]}#{method} (#{time})#{ANSI[:RESET]}  #{uri}"
+  end
+end
+
+# logging into console by default
+enable_logger
