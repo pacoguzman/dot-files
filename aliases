@@ -1,0 +1,71 @@
+source ~/.gitaliases
+
+# fucking useful shit
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias xopen='xdg-open'
+
+alias la='ls -A'
+alias l='ls -CF'
+alias ls='ls -G'
+alias ll='ls -alF'
+alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
+alias ...='.. ..'
+alias g='grep -i'  #case insensitive grep
+alias ducks='du -cks * | sort -rn|head -11' # Lists the size of all the folders$
+alias top='top -o cpu'
+alias systail='tail -f /var/log/system.log'
+# useful command to find what you should be aliasing:
+alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
+
+# rails stuff
+alias l='lookup'
+alias log='tail -f -0 ./log/*.log &'
+alias stoplog='killall tail'
+alias ss='ruby ./script/server'
+alias sc='ruby ./script/console'
+alias cdm='cap deploy deploy:migrate'
+alias model='script/generate model'
+alias controller='script/generate controller'
+alias migration='script/generate migration'
+alias migrate='rake db:migrate && rake db:test:clone'
+alias rollback='rake db:rollback'
+alias dtp='rake db:test:prepare'
+alias redo="rake db:migrate && rake db:rollback"
+alias sr='rake spec'
+alias rt='rake test'
+alias rf='rake features'
+alias restart='touch tmp/restart.txt'
+alias mong='mongrel_rails start'
+alias startpg='sudo su postgres'
+alias 1.9="rvm use 1.9"
+alias 1.8="rvm use default"
+alias t="rake test"
+alias s="rake spec"
+alias mrt="1.8 && rake test && 1.9 && rake test"
+alias mrs="1.8 && rake spec && 1.9 && rake spec"
+alias format-patch="git format-patch HEAD^1..HEAD"
+
+alias rfind="find . -name *.rb | xargs grep -n"
+
+alias ber="bundle exec rspec"
+alias bes="bundle exec spec"
+alias bec="bundle exec cucumber"
+alias be="bundle exec"
+alias ss='be rails s'
+alias sst='be rails s thin'
+alias sc='be rails c '
+alias bake='be rake '
+
+alias 1.8.7="rvm use 1.8.7"
+alias 1.9.2="rvm use 1.9.2"
+
+alias rms='rake merge:staging'
+alias start_mongo="screen -dmS mongo rake mongo:start"
