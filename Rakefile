@@ -32,8 +32,14 @@ task :install do
 end
  
 def replace_file(file)
-  system %Q{rm "$HOME/.#{file}"}
-  link_file(file)
+  original = File.join(ENV['HOME'], ".#{file}")
+  if File.directory?(original)
+    system %Q{rm -r "$HOME/.#{file}"}
+    link_file(file)
+  else
+    system %Q{rm "$HOME/.#{file}"}
+    link_file(file)
+  end
 end
  
 def link_file(file)
