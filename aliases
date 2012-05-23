@@ -79,3 +79,14 @@ alias module="ack 'module $1'"
 
 alias start_pg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
 alias start_mongo="screen -dmS mongo rake mongo:start"
+
+# BeBanjo Apps
+alias bebanjo_apps='cd ~/dev/github/bebanjo'
+alias sheriff='cd ~/dev/github/bebanjo/sheriff'
+alias sequence='cd ~/dev/github/bebanjo/sequence'
+alias panorama='cd ~/dev/github/bebanjo/panorama'
+alias metadata='cd ~/dev/github/bebanjo/metadata'
+alias metadata-sdk='cd ~/dev/github/bebanjo/metadata-sdk'
+alias metadata-exporter='cd ~/dev/github/bebanjo/metadata-exporters'
+alias kanhub='cd ~/dev/github/bebanjo/kanhub'
+alias tron='cd ~/dev/github/bebanjo/tron'
