@@ -63,6 +63,7 @@ alias ss='be rails s'
 alias sst='be rails s thin'
 alias sc='be rails c '
 alias bake='be rake '
+alias anote='be annotate -p before  -s -e [tests,fixtures]'
 
 alias restart='touch tmp/restart.txt'
 
@@ -77,8 +78,11 @@ alias def="ack 'def $1'"
 alias class="ack 'class $1'"
 alias module="ack 'module $1'"
 
-alias start_pg='sudo /Library/StartupItems/PostgreSQL/PostgreSQL start'
+alias start_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias stop_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
+alias start_redis='redis-server /usr/local/etc/redis.conf' 
 alias start_mongo="screen -dmS mongo rake mongo:start"
+
 
 # BeBanjo Apps
 alias bebanjo_apps='cd ~/dev/github/bebanjo'
