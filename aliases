@@ -94,3 +94,8 @@ alias metadata-sdk='cd ~/dev/github/bebanjo/metadata-sdk'
 alias metadata-exporter='cd ~/dev/github/bebanjo/metadata-exporters'
 alias kanhub='cd ~/dev/github/bebanjo/kanhub'
 alias tron='cd ~/dev/github/bebanjo/tron'
+alias movida='cd ~/dev/github/bebanjo/movida_rails2/movida'
+
+# Git Aliases
+alias p='git pull --rebase'
+alias P='git push'

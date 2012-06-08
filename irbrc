@@ -32,7 +32,7 @@ ANSI[:WHITE]     = "\e[37m"
 require 'irb/completion'
 require 'irb/ext/save-history'
 
-if defined?(Wirble)
+if defined?(Wirble) && defined?(Looksee)
 Wirble.init(:history_size => 10000)
 Wirble.colorize
 
@@ -122,6 +122,14 @@ def _post(url, params)
   Net::HTTP.post_form(URI.parse(url), params)
 end
 # END supercoco9 irbrc
+
+begin
+  require "pry"
+  Pry.start
+  exit
+rescue LoadError => e
+  warn "=> Unable to load pry"
+end
 
 # detects a rails console, cares about version
 def rails?(*args)
