@@ -48,8 +48,14 @@ function pull() {
   git pull --rebase origin `branch_name`
 }
 
+function gh_compare() {
+  branch_name=`branch_name`
+  repo=`git remote -v | grep push | grep origin | awk '{print $2}' | sed -e "s/^.*:\(.*\).git$/\1/"`
+  url=https://github.com/$repo/compare/stable...$branch_name
+  open -a "/Applications/Google Chrome.app" "$url";
+}
 
-alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
+alias gitrm="git status | grep deleted | awk '// {print $3}' | xargs git rm"
 
 export PATH=/usr/local/git/bin:$PATH
 export MANPATH=/usr/local/git/man:$MANPATH
