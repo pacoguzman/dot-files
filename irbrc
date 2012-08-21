@@ -1,14 +1,5 @@
-require 'rubygems'
-begin
- require 'wirble'
-rescue LoadError
-end
-begin
-  require 'looksee'
-rescue LoadError
-end
-
-alias q exit
+require 'irb/completion'
+require 'irb/ext/save-history'
 
 ANSI = {}
 ANSI[:RESET]     = "\e[0m"
@@ -24,52 +15,83 @@ ANSI[:MAGENTA]   = "\e[35m"
 ANSI[:CYAN]      = "\e[36m"
 ANSI[:WHITE]     = "\e[37m"
 
-# inspired by https://gist.github.com/794915
-# I've changed it a bit, it works fine for me now
-# but i'm still searching for a better solution
-# def require_without_bundler(*gems)
+alias q exit
 
-require 'irb/completion'
-require 'irb/ext/save-history'
+debundled = false
 
-if defined?(Wirble) && defined?(Looksee)
-Wirble.init(:history_size => 10000)
-Wirble.colorize
+# Break out of the bundler jail
+# from https://github.com/ConradIrwin/pry-debundle/blob/master/lib/pry-debundle.rb
+#if defined?(Bundler)
+#  Gem.post_reset_hooks.reject! do |hook|
+#    if hook.respond_to?(:source_location)
+#      hook.source_location.first =~ %r{/bundler/}
+#    else
+#      hook.__file__ =~ %r{/bundler/}
+#    end
+#  end
+#  Gem::Specification.reset
+#  load 'rubygems/custom_require.rb'
+#  debundled = true
+#else
+#  require 'rubygems'
+#end
 
-Wirble::Colorize.colors = {
-  # delimiter colors
-  :comma              => :white,
-  :refers             => :white,
+begin
+  require 'wirble'
+  Wirble.init(:history_size => 10000)
+  Wirble.colorize
 
-  # container colors (hash and array)
-  :open_hash          => :white,
-  :close_hash         => :white,
-  :open_array         => :white,
-  :close_array        => :white,
+  Wirble::Colorize.colors = {
+    # delimiter colors
+    :comma              => :white,
+    :refers             => :white,
 
-  # object colors
-  :open_object        => :light_red,
-  :object_class       => :red,
-  :object_addr_prefix => :blue,
-  :object_line_prefix => :blue,
-  :close_object       => :light_red,
+    # container colors (hash and array)
+    :open_hash          => :white,
+    :close_hash         => :white,
+    :open_array         => :white,
+    :close_array        => :white,
 
-  # symbol colors
-  :symbol             => :blue,
-  :symbol_prefix      => :blue,
+    # object colors
+    :open_object        => :light_red,
+    :object_class       => :red,
+    :object_addr_prefix => :blue,
+    :object_line_prefix => :blue,
+    :close_object       => :light_red,
 
-  # string colors
-  :open_string        => :light_green,
-  :string             => :light_green,
-  :close_string       => :light_green,
+    # symbol colors
+    :symbol             => :blue,
+    :symbol_prefix      => :blue,
 
-  # misc colors
-  :number             => :light_blue,
-  :keyword            => :orange,
-  :class              => :red,
-  :range              => :light_blue,
-}
-end # defined?(Wirlble)
+    # string colors
+    :open_string        => :light_green,
+    :string             => :light_green,
+    :close_string       => :light_green,
+
+    # misc colors
+    :number             => :light_blue,
+    :keyword            => :orange,
+    :class              => :red,
+    :range              => :light_blue,
+  }
+rescue LoadError
+  warn "=> Unable to load wirble"
+end
+
+#begin
+#  require "wirb"
+#  Wirb.start
+#rescue LoadError
+#  warn "=> Unable to load wirb"
+#end
+
+#begin
+#  require "pry"
+#  Pry.start
+#  exit
+#rescue LoadError => e
+#  warn "=> Unable to load pry"
+#end
 
 # method the return the methods not present on basic objects, good for
 # investigations
@@ -123,14 +145,6 @@ def _post(url, params)
 end
 # END supercoco9 irbrc
 
-begin
-  require "pry"
-  Pry.start
-  exit
-rescue LoadError => e
-  warn "=> Unable to load pry"
-end
-
 # detects a rails console, cares about version
 def rails?(*args)
   version=args.first
@@ -140,7 +154,7 @@ def rails?(*args)
 end
 
 # loading rails configuration if it is running as a rails console
-load File.dirname(__FILE__) + '/.railsrc' if rails?
+#load File.dirname(__FILE__) + '/.railsrc' if rails?
 
 # my irb is polite
 IRB.conf[:AT_EXIT] << Proc.new {puts "bye-bye"}

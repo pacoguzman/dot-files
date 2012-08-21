@@ -83,6 +83,8 @@ alias stop_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/serv
 alias start_redis='redis-server /usr/local/etc/redis.conf' 
 alias start_mongo="screen -dmS mongo rake mongo:start"
 
+alias logs='find ~/dev -type f -name "*.log" -print'
+alias rm_logs='find ~/dev -type f -name "log*/*.log" -print | xargs rm'
 
 # BeBanjo Apps
 alias bebanjo_apps='cd ~/dev/github/bebanjo'
@@ -96,6 +98,13 @@ alias kanhub='cd ~/dev/github/bebanjo/kanhub'
 alias tron='cd ~/dev/github/bebanjo/tron'
 alias movida='cd ~/dev/github/bebanjo/movida_rails2/movida'
 
+# My Apps
+alias gemfilehub='cd ~/dev/bitbucket/pacoguzman/gemfilehub'
+
 # Git Aliases
 alias p='git pull --rebase'
 alias P='git push'
+
+# Editor tricks
+alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl $1'
+alias subl='sublime'

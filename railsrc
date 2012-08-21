@@ -18,17 +18,6 @@ def log_to(logger)
 end
 
 def log_notifications
-  $odd_or_even_queries = false
-  ActiveSupport::Notifications.subscribe('sql.active_record') do |*args|
-    $odd_or_even_queries = !$odd_or_even_queries
-    color = $odd_or_even_queries ? ANSI[:CYAN] : ANSI[:MAGENTA]
-    event = ActiveSupport::Notifications::Event.new(*args)
-    time  = "%.1fms" % event.duration
-    name  = event.payload[:name]
-    sql   = event.payload[:sql].gsub("\n", " ").squeeze(" ")
-    puts "  #{ANSI[:UNDERLINE]}#{color}#{name} (#{time})#{ANSI[:RESET]}  #{sql}"
-  end
-
   ActiveSupport::Notifications.subscribe('request_event.couchrest') do |*args|
     event = ActiveSupport::Notifications::Event.new(*args)
     time  = "%.1fms" % event.duration
@@ -40,3 +29,12 @@ end
 
 # logging into console by default
 enable_logger
+
+if defined?(Rails)
+  begin
+    require 'hirb'
+    Hirb.enable
+  rescue LoadError
+    warn "=> Unable to load hirb"
+  end
+end
