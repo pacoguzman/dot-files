@@ -31,3 +31,9 @@ if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
 
 # RVM bash completion
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+
+# Coursera Computational Investment
+export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+source /usr/local/share/python/virtualenvwrapper.sh
+
+source $HOME/dev/github/tucker777/QSTK/local.sh
