@@ -9,3 +9,8 @@ source ~/.aliases
 export CC=/usr/bin/gcc-4.2
 
 export PATH=/usr/local/sbin:$PATH
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Bebanjo Tool Belt
+eval "$(/Users/fjguzman/dev/github/bebanjo/bj/bin/bj init -)"
