@@ -108,3 +108,4 @@ alias P='git push'
 # Editor tricks
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl $1'
 alias subl='sublime'
+alias e='subl -n .'
