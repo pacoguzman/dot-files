@@ -1,6 +1,6 @@
 [user]
-  name = Paco Guzman
-  email = pacoguzmanp@gmail.com
+	name = Paco Guzman
+	email = pacoguzmanp@gmail.com
 [merge]
   summary = true
   tool = opendiff
@@ -26,7 +26,7 @@
   status = auto
   ui = auto
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/fjguzman/.gitignore
   whitespace = fix
   quotepath = false
 [pull]
@@ -39,3 +39,11 @@
   color = true
 [status]
   color = auto
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[rerere]
+	enabled = true

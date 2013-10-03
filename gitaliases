@@ -27,6 +27,9 @@ alias sha='git rev-parse HEAD | pbcopy'
 alias good='git bisect good'
 alias bad='git bisect bad'
 
+# git log --left-right --graph --cherry-pick --oneline --decorate --boundary ruby-19...stable
+alias glc='git log --left-right --graph --cherry-pick --oneline --decorate --boundary'
+
 function gpar() {
   for remote in `git remote show`
   do
