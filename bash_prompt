@@ -53,14 +53,37 @@ function parse_git_dirty() {
 function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
+ 
+# prompt with ruby version
+# rbenv version | sed -e 's/ .*//'
+__rbenv_ps1 ()
+{
+  rbenv_ruby_version=`rbenv version | sed -e 's/ .*//'`
+  printf $rbenv_ruby_version
+}
 
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(rvm-prompt i v p g) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+# prompt with git && rbenv
+# if [ -f $BASH_COMPLETION_DIR/git ] && [ -f `which rbenv` ]; then
+#   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) ruby=$(__rbenv_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
+# elif [ -f $BASH_COMPLETION_DIR/git ]; then
+#   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
+# elif [ `which rbenv` ]; then
+#   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w ruby=$(__rbenv_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
+# else
+#   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
+# fi
+
+
+if [ -f .git ] && [ -f `which rbenv` ]; then
+  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+elif [ -f .git ]; then
+  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+elif [ `which rbenv` ]; then
+  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+else
+  export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
+fi
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # sets title of window to be user@host
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'
-
-# rvm prompt functios similar to the previous one
-#[[ -s "$HOME/.rvm/contrib/ps1_functions" ]] &&
-#  source "$HOME/.rvm/contrib/ps1_functions" &&
-#  ps1_set --notime --prompt ∫
