@@ -26,11 +26,6 @@ export HISTSIZE=10000
 shopt -s histappend
 
 alias h='history|g'
-# Load RVM into a shell session *as a function*
-if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
-
-# RVM bash completion
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
 # Coursera Computational Investment
 export PATH=/usr/local/bin:/usr/local/share/python:$PATH
