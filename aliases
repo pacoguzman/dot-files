@@ -86,6 +86,8 @@ alias start_mongo="screen -dmS mongo rake mongo:start"
 alias logs='find ~/dev -type f -name "*.log" -print'
 alias rm_logs='find ~/dev -type f -name "log*/*.log" -print | xargs rm'
 
+alias rr='rbenv rehash'
+
 # BeBanjo Apps
 alias bebanjo_apps='cd ~/dev/github/bebanjo'
 alias sheriff='cd ~/dev/github/bebanjo/sheriff'
@@ -100,6 +102,9 @@ alias movida='cd ~/dev/github/bebanjo/movida'
 
 # My Apps
 alias gemfilehub='cd ~/dev/bitbucket/pacoguzman/gemfilehub'
+
+# Apps tricks
+alias mysql-optimize='mysqlcheck -o -u root --all-databases'
 
 # Git Aliases
 alias p='git pull --rebase'
