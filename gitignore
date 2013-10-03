@@ -21,3 +21,4 @@ tmp/**/*
 *.zip
 .com.apple.*
 .*.sw?
+db/elasticsearch
