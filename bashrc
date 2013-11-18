@@ -27,8 +27,8 @@ shopt -s histappend
 
 alias h='history|g'
 
-# Coursera Computational Investment
-export PATH=/usr/local/bin:/usr/local/share/python:$PATH
-source /usr/local/share/python/virtualenvwrapper.sh
-
-source $HOME/dev/github/tucker777/QSTK/local.sh
+## Coursera Computational Investment
+#export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+#source /usr/local/share/python/virtualenvwrapper.sh
+#
+#source $HOME/dev/github/tucker777/QSTK/local.sh
