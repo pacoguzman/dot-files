@@ -46,14 +46,6 @@ export WHITE
 export BOLD
 export RESET
 
-function parse_git_dirty() {
-	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
-}
-
-function parse_git_branch() {
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
- 
 # prompt with ruby version
 # rbenv version | sed -e 's/ .*//'
 __rbenv_ps1 ()
@@ -63,15 +55,30 @@ __rbenv_ps1 ()
 }
 
 if [ -f .git ] && [ -f `which rbenv` ]; then
-  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on\")$(__git_ps1)\n\$ \[$RESET\]"
 elif [ -f .git ]; then
-  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on\")$(__git_ps1)\n\$ \[$RESET\]"
 elif [ `which rbenv` ]; then
-  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on\")$(__git_ps1)\n\$ \[$RESET\]"
 else
   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
 fi
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # sets title of window to be user@host
-export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'
+#export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'
+
+# Mike Perham Prompt
+git_completion=`brew --prefix git`/etc/bash_completion.d/git-completion.bash
+if [ -f $git_completion ] ; then source $git_completion; fi
+
+source `brew --prefix git`/etc/bash_completion.d/git-prompt.sh
+export GIT_PS1_SHOWCOLORHINTS='1'
+export GIT_PS1_SHOWDIRTYSTATE='1'
+export GIT_PS1_SHOWUPSTREAM='auto'
+
+if [ -f `which rbenv` ]; then
+  export PROMPT_COMMAND='__git_ps1 "\[$GREEN\]\w\[\e[0m\] as \[$LIGHT_BLUE\]\$(__rbenv_ps1)\[$RESET\]" "\\\$ "'
+else
+  export PROMPT_COMMAND='__git_ps1 "\[$GREEN\]\w\[\e[0m\]" "\\\$ "'
+fi

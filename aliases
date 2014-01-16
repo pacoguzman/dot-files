@@ -14,7 +14,10 @@ alias xopen='xdg-open'
 alias mvim='open -a /Applications/MacVim.app'
 alias la='ls -A'
 alias l='ls -CF'
+
 alias ls='ls -G'
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
 alias ...='.. ..'
