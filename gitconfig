@@ -18,6 +18,8 @@
   st = status -a
   type = cat-file -t
   sp = stash pop
+  sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+  sapply = "!f() { git stash apply stash^{/$*}; }; f"
 [apply]
   whitespace = nowarn
 [color]
