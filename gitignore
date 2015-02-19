@@ -22,3 +22,5 @@ tmp/**/*
 .com.apple.*
 .*.sw?
 db/elasticsearch
+things/*
+.rubocop_local.yml
