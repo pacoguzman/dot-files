@@ -32,3 +32,6 @@ alias h='history|g'
 #source /usr/local/share/python/virtualenvwrapper.sh
 #
 #source $HOME/dev/github/tucker777/QSTK/local.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
