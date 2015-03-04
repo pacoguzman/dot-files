@@ -10,7 +10,6 @@ fi
 
 alias xopen='xdg-open'
 
-
 alias mvim='open -a /Applications/MacVim.app'
 alias la='ls -A'
 alias l='ls -CF'
@@ -48,8 +47,6 @@ alias rf='rake features'
 alias restart='touch tmp/restart.txt'
 alias mong='mongrel_rails start'
 alias startpg='sudo su postgres'
-alias 1.9="rvm use 1.9"
-alias 1.8="rvm use default"
 alias t="rake test"
 alias s="rake spec"
 alias mrt="1.8 && rake test && 1.9 && rake test"
@@ -67,13 +64,9 @@ alias sst='be rails s thin'
 alias sc='be rails c '
 alias bake='be rake '
 alias anote='be annotate -p before  -s -e [tests,fixtures]'
+alias pr-rubo='pronto run -f text -r rubocop -c origin/stable'
 
 alias restart='touch tmp/restart.txt'
-
-alias 1.8.7="rvm use 1.8.7"
-alias 1.9.2="rvm use 1.9.2"
-alias 1.9.3="rvm use 1.9.3"
-alias falcon="rvm use 1.9.3-falcon"
 
 alias rms='rake merge:staging'
 
@@ -93,18 +86,16 @@ alias rr='rbenv rehash'
 
 # BeBanjo Apps
 alias bebanjo_apps='cd ~/dev/github/bebanjo'
-alias sheriff='cd ~/dev/github/bebanjo/sheriff'
 alias sequence='cd ~/dev/github/bebanjo/sequence'
 alias panorama='cd ~/dev/github/bebanjo/panorama'
-alias metadata='cd ~/dev/github/bebanjo/metadata'
-alias metadata-sdk='cd ~/dev/github/bebanjo/metadata-sdk'
-alias metadata-exporter='cd ~/dev/github/bebanjo/metadata-exporters'
 alias kanhub='cd ~/dev/github/bebanjo/kanhub'
 alias tron='cd ~/dev/github/bebanjo/tron'
 alias movida='cd ~/dev/github/bebanjo/movida'
+alias bebanjo-rum='cd ~/dev/github/bebanjo/bebanjo-rum'
+alias bebanjo-search='cd ~/dev/github/bebanjo/bebanjo-search'
+alias bebanjo-sidekiq='cd ~/dev/github/bebanjo/bebanjo-sidekiq'
 
 # My Apps
-alias gemfilehub='cd ~/dev/bitbucket/pacoguzman/gemfilehub'
 
 # Apps tricks
 alias mysql-optimize='mysqlcheck -o -u root --all-databases'
