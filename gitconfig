@@ -1,6 +1,6 @@
 [user]
-	name = Paco Guzman
-	email = pacoguzmanp@gmail.com
+  name = Paco Guzman
+  email = pacoguzmanp@gmail.com
 [merge]
   summary = true
   tool = opendiff
@@ -28,7 +28,7 @@
   status = auto
   ui = auto
 [core]
-	excludesfile = /Users/fjguzman/.gitignore
+  excludesfile = /Users/paco/.gitignore_global
   whitespace = fix
   quotepath = false
 [pull]
@@ -45,7 +45,7 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [rerere]
-	enabled = true
+  enabled = true

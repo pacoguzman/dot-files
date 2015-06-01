@@ -1,4 +1,5 @@
 source ~/.git-completion.bash
+source ~/.tmuxinator-completion.bash
 source ~/.bashrc
 source ~/.bash_prompt
 source ~/.gitaliases
@@ -12,4 +13,10 @@ export PATH=/usr/local/sbin:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Bebanjo Tool Belt
-eval "$(/Users/fjguzman/dev/github/bebanjo/bj/bin/bj init -)"
+if [ -f /Users/fjguzman/dev/github/bebanjo/bj ]; then
+  eval "$(/Users/fjguzman/dev/github/bebanjo/bj/bin/bj init -)"
+fi
+
+
+# Tmuxinator
+source ~/.tmuxinator-completion.bash

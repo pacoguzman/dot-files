@@ -9,7 +9,7 @@ export EDITOR='vim'
 export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
-complete -C ~/.rake-completion.rb -o default rake
+# complete -C ~/.rake-completion.rb -o default rake
 
 # readline settings
 bind "set completion-ignore-case on" 
@@ -26,12 +26,3 @@ export HISTSIZE=10000
 shopt -s histappend
 
 alias h='history|g'
-
-## Coursera Computational Investment
-#export PATH=/usr/local/bin:/usr/local/share/python:$PATH
-#source /usr/local/share/python/virtualenvwrapper.sh
-#
-#source $HOME/dev/github/tucker777/QSTK/local.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
