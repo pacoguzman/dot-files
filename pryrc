@@ -2,6 +2,12 @@
 Pry.config.should_load_plugins = false
 Pry.plugins["doc"].activate!
 
+# == Pry-Nav - Using pry as a debugger ==
+Pry.commands.alias_command 'c', 'continue' rescue nil
+Pry.commands.alias_command 's', 'step' rescue nil
+Pry.commands.alias_command 'n', 'next' rescue nil
+Pry.commands.alias_command 'r!', 'reload!' rescue nil
+
 # Launch Pry with access to the entire Rails stack.
 # If you have Pry in your Gemfile, you can pass: ./script/console --irb=pry instead.
 # If you don't, you can load it through the lines below :)
