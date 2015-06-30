@@ -23,4 +23,6 @@ tmp/**/*
 .*.sw?
 db/elasticsearch
 things/*
+sandi_meter
+sandi_meter/*
 .rubocop_local.yml

@@ -28,7 +28,7 @@
   status = auto
   ui = auto
 [core]
-  excludesfile = /Users/paco/.gitignore_global
+  excludesfile = ~/.gitignore_global
   whitespace = fix
   quotepath = false
 [pull]
