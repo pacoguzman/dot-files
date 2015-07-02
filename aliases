@@ -68,16 +68,15 @@ alias pr-rubo='pronto run -f text -r rubocop -c origin/stable'
 
 alias restart='touch tmp/restart.txt'
 
-alias rms='rake merge:staging'
-
 alias def="ack 'def $1'"
 alias class="ack 'class $1'"
 alias module="ack 'module $1'"
 
 alias start_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias stop_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
-alias start_redis='redis-server /usr/local/etc/redis.conf' 
+alias start_redis='redis-server /usr/local/etc/redis.conf'
 alias start_mongo="screen -dmS mongo rake mongo:start"
+alias start_pow="~/Library/Application\ Support/Pow/Current/bin/pow"
 
 alias logs='find ~/dev -type f -name "*.log" -print'
 alias rm_logs='find ~/dev -type f -name "log*/*.log" -print | xargs rm'
@@ -95,6 +94,13 @@ alias bebanjo-rum='cd ~/dev/github/bebanjo/bebanjo-rum'
 alias bebanjo-search='cd ~/dev/github/bebanjo/bebanjo-search'
 alias bebanjo-sidekiq='cd ~/dev/github/bebanjo/bebanjo-sidekiq'
 
+# JobAndTalentApps
+
+alias jt-web_core='cd ~/dev/github/jobandtalent/web_core'
+alias jt-suggestive='cd ~/dev/github/jobandtalent/suggestivev'
+alias jt-imports='cd ~/dev/github/jobandtalent/imports'
+alias jt-geo_service='cd ~/dev/github/jobandtalent/geo_service'
+
 # My Apps
 
 # Apps tricks
@@ -105,7 +111,4 @@ alias p='git pull --rebase'
 alias P='git push'
 
 # Editor tricks
-alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl $1'
-alias subl='sublime'
-alias e='subl -n .'
-
+alias e='atom .'
