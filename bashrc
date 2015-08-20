@@ -12,7 +12,7 @@ export VISUAL=$EDITOR
 # complete -C ~/.rake-completion.rb -o default rake
 
 # readline settings
-bind "set completion-ignore-case on" 
+bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
 # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
@@ -26,3 +26,8 @@ export HISTSIZE=10000
 shopt -s histappend
 
 alias h='history|g'
+
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
