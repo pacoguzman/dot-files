@@ -22,6 +22,8 @@ alias gk='gitk --all &'
 alias grh='git reset HEAD'
 alias grc='git rebase --continue'
 alias grs='git rebase --skip'
+# git_file_history gfh path/to/file
+alias gfh='git log --follow --'
 alias sha='git rev-parse HEAD | pbcopy'
 
 alias good='git bisect good'
