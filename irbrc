@@ -17,82 +17,6 @@ ANSI[:WHITE]     = "\e[37m"
 
 alias q exit
 
-debundled = false
-
-# Break out of the bundler jail
-# from https://github.com/ConradIrwin/pry-debundle/blob/master/lib/pry-debundle.rb
-#if defined?(Bundler)
-#  Gem.post_reset_hooks.reject! do |hook|
-#    if hook.respond_to?(:source_location)
-#      hook.source_location.first =~ %r{/bundler/}
-#    else
-#      hook.__file__ =~ %r{/bundler/}
-#    end
-#  end
-#  Gem::Specification.reset
-#  load 'rubygems/custom_require.rb'
-#  debundled = true
-#else
-#  require 'rubygems'
-#end
-
-begin
-  require 'wirble'
-  Wirble.init(:history_size => 10000)
-  Wirble.colorize
-
-  Wirble::Colorize.colors = {
-    # delimiter colors
-    :comma              => :white,
-    :refers             => :white,
-
-    # container colors (hash and array)
-    :open_hash          => :white,
-    :close_hash         => :white,
-    :open_array         => :white,
-    :close_array        => :white,
-
-    # object colors
-    :open_object        => :light_red,
-    :object_class       => :red,
-    :object_addr_prefix => :blue,
-    :object_line_prefix => :blue,
-    :close_object       => :light_red,
-
-    # symbol colors
-    :symbol             => :blue,
-    :symbol_prefix      => :blue,
-
-    # string colors
-    :open_string        => :light_green,
-    :string             => :light_green,
-    :close_string       => :light_green,
-
-    # misc colors
-    :number             => :light_blue,
-    :keyword            => :orange,
-    :class              => :red,
-    :range              => :light_blue,
-  }
-rescue LoadError
-  warn "=> Unable to load wirble"
-end
-
-#begin
-#  require "wirb"
-#  Wirb.start
-#rescue LoadError
-#  warn "=> Unable to load wirb"
-#end
-
-#begin
-#  require "pry"
-#  Pry.start
-#  exit
-#rescue LoadError => e
-#  warn "=> Unable to load pry"
-#end
-
 # method the return the methods not present on basic objects, good for
 # investigations
 class Object
@@ -144,17 +68,6 @@ def _post(url, params)
   Net::HTTP.post_form(URI.parse(url), params)
 end
 # END supercoco9 irbrc
-
-# detects a rails console, cares about version
-def rails?(*args)
-  version=args.first
-  v2 = ($0 == 'irb' && ENV['RAILS_ENV'])
-  v3 = ($0 == 'script/rails' && Rails.env)
-  version == 2 ? v2 : version == 3 ? v3 : v2 || v3
-end
-
-# loading rails configuration if it is running as a rails console
-#load File.dirname(__FILE__) + '/.railsrc' if rails?
 
 # my irb is polite
 IRB.conf[:AT_EXIT] << Proc.new {puts "bye-bye"}

@@ -6,17 +6,26 @@ source ~/.gitaliases
 source ~/.aliases
 
 # RBENV
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if [ -d $HOME/.rbenv ]; then
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+fi
+
+# CHRUBY
+if [ -f /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
 
 export PATH=/usr/local/sbin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-### Bebanjo Tool Belt
-if [ -f /Users/fjguzman/dev/github/bebanjo/bj ]; then
-  eval "$(/Users/fjguzman/dev/github/bebanjo/bj/bin/bj init -)"
-fi
+export DEV_HOME="$HOME/dev"
 
+### Bebanjo Tool Belt
+if [ -d "${DEV_HOME}/github/bebanjo/bj" ]; then
+  eval "$($DEV_HOME/github/bebanjo/bj/bin/bj init -)"
+fi
 
 # Tmuxinator
 source ~/.tmuxinator-completion.bash
