@@ -16,6 +16,11 @@ if [ -f /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/auto.sh
 fi
 
+# Postgres.app
+if [ -d /Applications/Postgres.app ]; then
+  export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+fi
+
 export PATH=/usr/local/sbin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
