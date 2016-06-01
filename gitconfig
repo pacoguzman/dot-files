@@ -32,6 +32,7 @@
   excludesfile = ~/.gitignore_global
   whitespace = fix
   quotepath = false
+  autocrlf = input
 [pull]
   rebase = true
 [push]
