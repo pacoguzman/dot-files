@@ -22,6 +22,13 @@ if [ -d /Applications/Postgres.app ]; then
 fi
 
 export PATH=/usr/local/sbin:$PATH
+
+# pgloader
+
+if [ -f $HOME/dev/github/dimitri/pgloader/build/bin/pgloader ]; then
+  export PATH="$HOME/dev/github/dimitri/pgloader/build/bin:$PATH"
+fi
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
