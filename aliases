@@ -101,6 +101,13 @@ alias jt-suggestive='cd ~/dev/github/jobandtalent/suggestivev'
 alias jt-imports='cd ~/dev/github/jobandtalent/imports'
 alias jt-geo_service='cd ~/dev/github/jobandtalent/geo_service'
 
+# GitLab
+
+alias gitlab-ce='cd ~/dev/gitlab/gitlab/gdk/gitlab'
+alias gitlab-ee='cd ~/dev/gitlab/gitlab/gdk-ee/gitlab'
+alias gdk='cd ~/dev/gitlab/gitlab/gdk/'
+alias gdk-ee='cd ~/dev/gitlab/gitlab/gdk-ee/'
+
 # My Apps
 
 # Apps tricks
