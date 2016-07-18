@@ -27,3 +27,4 @@ sandi_meter
 sandi_meter/*
 .rubocop_local.yml
 .byebug_history
+.env.production
