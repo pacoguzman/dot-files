@@ -1,11 +1,11 @@
 require 'rake'
- 
+
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = true
   Dir['*'].each do |file|
     next if %w[Rakefile README].include? file
-    
+
     original = File.join(ENV['HOME'], ".#{file}")
 
     if File.exist?(original) || File.symlink?(original)
@@ -30,7 +30,7 @@ task :install do
     end
   end
 end
- 
+
 def replace_file(file)
   original = File.join(ENV['HOME'], ".#{file}")
   if File.directory?(original)
@@ -41,7 +41,7 @@ def replace_file(file)
     link_file(file)
   end
 end
- 
+
 def link_file(file)
   puts "linking ~/.#{file}"
   system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}

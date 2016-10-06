@@ -5,6 +5,9 @@ source ~/.bash_prompt
 source ~/.gitaliases
 source ~/.aliases
 
+# dot-files bin
+export PATH=$HOME/.bin:$PATH
+
 # RBENV
 if [ -d $HOME/.rbenv ]; then
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
