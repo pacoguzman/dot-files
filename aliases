@@ -43,20 +43,15 @@ alias dtp='rake db:test:prepare'
 alias redo="rake db:migrate && rake db:rollback"
 alias sr='rake spec'
 alias rt='rake test'
-alias rf='rake features'
 alias restart='touch tmp/restart.txt'
-alias mong='mongrel_rails start'
 alias startpg='sudo su postgres'
 alias t="rake test"
 alias s="rake spec"
-alias mrt="1.8 && rake test && 1.9 && rake test"
-alias mrs="1.8 && rake spec && 1.9 && rake spec"
 alias format-patch="git format-patch HEAD^1..HEAD"
 
 alias rfind="find . -name *.rb | xargs grep -n"
 
 alias ber="bundle exec rspec"
-alias bes="bundle exec spec"
 alias bec="bundle exec cucumber"
 alias be="bundle exec"
 alias ss='be rails s'
@@ -66,8 +61,6 @@ alias bake='be rake '
 alias anote='be annotate -p before  -s -e [tests,fixtures]'
 alias pr-rubo='pronto run -f text -r rubocop -c origin/stable'
 
-alias restart='touch tmp/restart.txt'
-
 alias def="ack 'def $1'"
 alias class="ack 'class $1'"
 alias module="ack 'module $1'"
@@ -76,7 +69,6 @@ alias start_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/ser
 alias stop_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 alias start_redis='redis-server /usr/local/etc/redis.conf'
 alias start_mongo="screen -dmS mongo rake mongo:start"
-alias start_pow="~/Library/Application\ Support/Pow/Current/bin/pow"
 
 alias logs='find ~/dev -type f -name "*.log" -print'
 alias rm_logs='find ~/dev -type f -name "log*/*.log" -print | xargs rm'
