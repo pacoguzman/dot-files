@@ -86,6 +86,13 @@ alias bebanjo-rum='cd ~/dev/github/bebanjo/bebanjo-rum'
 alias bebanjo-search='cd ~/dev/github/bebanjo/bebanjo-search'
 alias bebanjo-sidekiq='cd ~/dev/github/bebanjo/bebanjo-sidekiq'
 
+# Cabify
+
+alias cabify_apps='cd ~/dev/github/cabify'
+alias cdb='cd ~/dev/github/cabify/cdk'
+alias cabify_server='cd ~/dev/github/cabify/cabify_server'
+alias cabify_go='cd ~/dev/github/cabify/product_go'
+
 # JobAndTalentApps
 
 alias jt-web_core='cd ~/dev/github/jobandtalent/web_core'
