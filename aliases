@@ -89,7 +89,7 @@ alias bebanjo-sidekiq='cd ~/dev/github/bebanjo/bebanjo-sidekiq'
 # Cabify
 
 alias cabify_apps='cd ~/dev/github/cabify'
-alias cdb='cd ~/dev/github/cabify/cdk'
+alias cdk='cd ~/dev/github/cabify/cdk'
 alias cabify_server='cd ~/dev/github/cabify/cabify_server'
 alias cabify_go='cd ~/dev/github/cabify/product_go'
 
