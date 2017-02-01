@@ -114,7 +114,7 @@ alias mysql-optimize='mysqlcheck -o -u root --all-databases'
 
 # Git Aliases
 alias p='git pull --rebase'
-alias P='git push'
+alias P='echo "git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease ..." && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
 
 # Editor tricks
 alias e='atom .'
