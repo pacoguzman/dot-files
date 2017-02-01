@@ -42,5 +42,11 @@ if [ -d "${DEV_HOME}/github/bebanjo/bj" ]; then
   eval "$($DEV_HOME/github/bebanjo/bj/bin/bj init -)"
 fi
 
+### Cabify Tool Belt
+
+if [ -d "${DEV_HOME}/github/cabify/cabi" ]; then
+  eval "$($DEV_HOME/github/cabify/cabi/bin/cabi init -)"
+fi
+
 # Tmuxinator
 source ~/.tmuxinator-completion.bash
