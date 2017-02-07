@@ -92,6 +92,7 @@ alias cabify_apps='cd ~/dev/github/cabify'
 alias cdk='cd ~/dev/github/cabify/cdk'
 alias cabify_server='cd ~/dev/github/cabify/cabify_server'
 alias cabify_go='cd ~/dev/github/cabify/product_go'
+alias cabify_rubocop='git diff master --numstat | cut -f 3 | grep "\.rb$" | xargs ls 2>/dev/null | xargs rubocop -a'
 
 # JobAndTalentApps
 
