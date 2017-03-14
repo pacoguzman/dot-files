@@ -9,7 +9,6 @@ alias gpom='git push origin master'
 alias gpa='git push-all' # see [alias] in ~/.gitconfig
 alias gap='git add -p .'
 alias gcp='git checkout -p .'
-alias gd='git diff | mate'
 alias ga='git add'
 alias gcl='git config --list'
 alias gc='git commit -v'
