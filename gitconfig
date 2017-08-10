@@ -53,3 +53,7 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[includeIf "gitdir:~/cabify/"]
+  path = .gitconfig-cabify
+[includeIf "gitdir:~/bebanjo/"]
+  path = .gitconfig-bebanjo
