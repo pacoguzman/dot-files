@@ -28,3 +28,6 @@ sandi_meter/*
 .rubocop_local.yml
 .byebug_history
 .env.production
+httpie.md
+httpies
+httpies/*
