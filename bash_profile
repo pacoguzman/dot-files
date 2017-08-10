@@ -48,5 +48,12 @@ if [ -d "${DEV_HOME}/github/cabify/cabi" ]; then
   eval "$($DEV_HOME/github/cabify/cabi/bin/cabi init -)"
 fi
 
+# asdf https://github.com/asdf-vm/asdf
+# Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
+if [ -d $HOME/.rbenv ]; then
+  source $HOME/.asdf/asdf.sh
+  source $HOME/.asdf/completions/asdf.bash
+fi
+
 # Tmuxinator
 source ~/.tmuxinator-completion.bash
