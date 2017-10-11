@@ -1,6 +1,6 @@
 [user]
-  name = Paco Guzman
-  email = pacoguzmanp@gmail.com
+	name = Paco Guzman
+	email = pacoguzmanp@gmail.com
 [merge]
   summary = true
   tool = opendiff
@@ -30,7 +30,23 @@
   branch = auto
   diff = auto
   status = auto
-  ui = auto
+
+  ui = true
+
+  [diff-highlight]
+    oldNormal = "red bold"
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+
+  [diff]
+    meta = "227"
+    frag = "magenta bold"
+    commit = "227 bold"
+    old = "red bold"
+    new = "green bold"
+    whitespace = "red reverse"
+
 [core]
   excludesfile = ~/.gitignore_global
   whitespace = fix
@@ -54,6 +70,6 @@
 	smudge = git-lfs smudge %f
 	required = true
 [includeIf "gitdir:~/cabify/"]
-  path = .gitconfig-cabify
+  path = ~/.gitconfig-cabify
 [includeIf "gitdir:~/bebanjo/"]
-  path = .gitconfig-bebanjo
+  path = ~/.gitconfig-bebanjo
