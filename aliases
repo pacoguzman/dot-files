@@ -117,7 +117,10 @@ alias mysql-optimize='mysqlcheck -o -u root --all-databases'
 
 # Git Aliases
 alias p='git pull --rebase'
-alias P='echo "git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease ..." && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
+# force-with-lease is not as safe as expected
+# https://developer.atlassian.com/blog/2015/04/force-with-lease/
+# alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease ..." && git pull && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
+alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD) ..." && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
 
 # Editor tricks
 alias e='atom .'
