@@ -66,10 +66,10 @@
 [rerere]
   enabled = true
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
-[includeIf "gitdir:~/cabify/"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[includeIf "gitdir:~/dev/github/cabify/"]
   path = ~/.gitconfig-cabify
-[includeIf "gitdir:~/bebanjo/"]
+[includeIf "gitdir:~/dev/github/bebanjo/"]
   path = ~/.gitconfig-bebanjo
