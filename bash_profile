@@ -1,5 +1,4 @@
 source ~/.git-completion.bash
-source ~/.tmuxinator-completion.bash
 source ~/.bashrc
 source ~/.bash_prompt
 source ~/.gitaliases
@@ -21,16 +20,10 @@ fi
 
 # Postgres.app
 if [ -d /Applications/Postgres.app ]; then
-  export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+  export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH"
 fi
 
 export PATH=/usr/local/sbin:$PATH
-
-# pgloader
-
-if [ -f $HOME/dev/github/dimitri/pgloader/build/bin/pgloader ]; then
-  export PATH="$HOME/dev/github/dimitri/pgloader/build/bin:$PATH"
-fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -42,12 +35,6 @@ if [ -d "${DEV_HOME}/github/bebanjo/bj" ]; then
   eval "$($DEV_HOME/github/bebanjo/bj/bin/bj init -)"
 fi
 
-### Cabify Tool Belt
-
-if [ -d "${DEV_HOME}/github/cabify/cabi" ]; then
-  eval "$($DEV_HOME/github/cabify/cabi/bin/cabi init -)"
-fi
-
 # asdf https://github.com/asdf-vm/asdf
 # Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
 if [ -d $HOME/.rbenv ]; then
@@ -55,5 +42,6 @@ if [ -d $HOME/.rbenv ]; then
   source $HOME/.asdf/completions/asdf.bash
 fi
 
-# Tmuxinator
-source ~/.tmuxinator-completion.bash
+# gcloud
+export CLOUDSDK_PYTHON=$(which python)
+export PATH="${DEV_HOME}/google-cloud-sdk/bin:$PATH"

@@ -27,6 +27,9 @@ alias systail='tail -f /var/log/system.log'
 # useful command to find what you should be aliasing:
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
+# docker stuff
+alias stop-all-dockers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+
 # rails stuff
 alias l='lookup'
 alias log='tail -f -0 ./log/*.log &'
@@ -60,6 +63,7 @@ alias sc='be rails c '
 alias bake='be rake '
 alias anote='be annotate -p before  -s -e [tests,fixtures]'
 alias pr-rubo='pronto run -f text -r rubocop -c origin/stable'
+alias cop='rubocop `git diff --name-only master..HEAD`'
 
 alias def="ack 'def $1'"
 alias class="ack 'class $1'"

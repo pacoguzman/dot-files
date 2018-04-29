@@ -30,7 +30,6 @@
   branch = auto
   diff = auto
   status = auto
-
   ui = true
 
   [diff-highlight]
@@ -46,7 +45,6 @@
     old = "red bold"
     new = "green bold"
     whitespace = "red reverse"
-
 [core]
   excludesfile = ~/.gitignore_global
   whitespace = fix
@@ -54,7 +52,7 @@
   autocrlf = input
   pager = diff-so-fancy | less --tabs=4 -RFX
 [pull]
-  rebase = true
+  rebase = preserve
 [push]
   default = upstream
 [help]
@@ -66,9 +64,10 @@
 [rerere]
   enabled = true
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
   required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
 [includeIf "gitdir:~/dev/github/cabify/"]
   path = ~/.gitconfig-cabify
 [includeIf "gitdir:~/dev/github/bebanjo/"]
