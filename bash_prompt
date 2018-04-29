@@ -1,80 +1,13 @@
-# @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
-# Shamelessly copied from https://github.com/gf3/dotfiles
-# Screenshot: http://i.imgur.com/s0Blh.png
+# brew install bash-completion
+[[ -f "$(brew --prefix)/etc/bash_completion" ]] && source "$(brew --prefix)/etc/bash_completion"
 
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM=gnome-256color
-elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM=xterm-256color
-fi
+# Set before source gitprompt
+GIT_PROMPT_ONLY_IN_REPO=1 # Use the default prompt when not in a git repo.
+GIT_PROMPT_FETCH_REMOTE_STATUS=0 # Avoid fetching remote status
+GIT_PROMPT_SHOW_UPSTREAM=0 # Don't display upstream tracking branch
+GIT_SHOW_UNTRACKED_FILES=no # Don't count untracked files (no, normal, all)
+# My on GIT_PROMPT cell
+GIT_PROMPT_THEME=Custom
 
-if tput setaf 1 &> /dev/null; then
-	tput sgr0
-	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-		MAGENTA=$(tput setaf 9)
-		ORANGE=$(tput setaf 172)
-		LIGHT_BLUE=$(tput setaf 153)
-		GREEN=$(tput setaf 190)
-		PURPLE=$(tput setaf 141)
-		WHITE=$(tput setaf 256)
-	else
-		MAGENTA=$(tput setaf 5)
-		ORANGE=$(tput setaf 4)
-		LIGHT_BLUE=$(tput setaf 6)
-		GREEN=$(tput setaf 2)
-		PURPLE=$(tput setaf 1)
-		WHITE=$(tput setaf 7)
-	fi
-	BOLD=$(tput bold)
-	RESET=$(tput sgr0)
-else
-	MAGENTA="\033[1;31m"
-	ORANGE="\033[1;33m"
-	GREEN="\033[1;32m"
-	LIGHT_BLUE="\033[1;34m"
-	PURPLE="\033[1;35m"
-	WHITE="\033[1;37m"
-	BOLD=""
-	RESET="\033[m"
-fi
-
-export MAGENTA
-export ORANGE
-export GREEN
-export PURPLE
-export WHITE
-export BOLD
-export RESET
-
-# prompt with ruby version
-# rbenv version | sed -e 's/ .*//'
-__rbenv_ps1 ()
-{
-  rbenv_ruby_version=`rbenv version | sed -e 's/ .*//'`
-  printf $rbenv_ruby_version
-}
-
-if [ -f .git ] && [ -f $HOME/.rbenv ] && [ -f `which rbenv` ]; then
-  export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" as \[$LIGHT_BLUE\]\$(__rbenv_ps1) \[$WHITE\]on\")$(__git_ps1)\n\$ \[$RESET\]"
-else
-  export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
-fi
-export PS2="\[$ORANGE\]→ \[$RESET\]"
-
-# sets title of window to be user@host
-#export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'
-
-# Mike Perham Prompt
-git_completion=`brew --prefix git`/etc/bash_completion.d/git-completion.bash
-if [ -f $git_completion ] ; then source $git_completion; fi
-
-source `brew --prefix git`/etc/bash_completion.d/git-prompt.sh
-export GIT_PS1_SHOWCOLORHINTS='1'
-export GIT_PS1_SHOWDIRTYSTATE='1'
-export GIT_PS1_SHOWUPSTREAM='auto'
-
-if [ -f $HOME/.rbenv ] && [ -f `which rbenv` ]; then
-  export PROMPT_COMMAND='__git_ps1 "\[$GREEN\]\w\[\e[0m\] as \[$LIGHT_BLUE\]\$(__rbenv_ps1)\[$RESET\]" "\\\$ "'
-else
-  export PROMPT_COMMAND='__git_ps1 "\[$GREEN\]\w\[\e[0m\]" "\\\$ "'
-fi
+# brew install bash-git-prompt
+[[ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]] && source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
