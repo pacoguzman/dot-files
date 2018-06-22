@@ -1,6 +1,6 @@
 [user]
-	name = Paco Guzman
-	email = pacoguzmanp@gmail.com
+  name = Paco Guzman
+  email = pacoguzmanp@gmail.com
 [merge]
   summary = true
   tool = opendiff
@@ -31,20 +31,18 @@
   diff = auto
   status = auto
   ui = true
-
-  [diff-highlight]
-    oldNormal = "red bold"
-    oldHighlight = "red bold 52"
-    newNormal = "green bold"
-    newHighlight = "green bold 22"
-
-  [diff]
-    meta = "227"
-    frag = "magenta bold"
-    commit = "227 bold"
-    old = "red bold"
-    new = "green bold"
-    whitespace = "red reverse"
+[diff-highlight]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+[diff]
+  meta = "227"
+  frag = "magenta bold"
+  commit = "227 bold"
+  old = "red bold"
+  new = "green bold"
+  whitespace = "red reverse"
 [core]
   excludesfile = ~/.gitignore_global
   whitespace = fix
@@ -54,7 +52,7 @@
 [pull]
   rebase = preserve
 [push]
-  default = upstream
+  default = simple
 [help]
   autocorrect = 1
 [pager]
