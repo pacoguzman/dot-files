@@ -6,7 +6,6 @@ export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 export EDITOR='vim'
-export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
 # complete -C ~/.rake-completion.rb -o default rake
@@ -39,3 +38,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # added by travis gem
 [ -f /Users/paco/.travis/travis.sh ] && source /Users/paco/.travis/travis.sh
+
+# Git
+export GIT_EDITOR=$EDITOR
+export LANGUAGE='en_US.UTF-8'
