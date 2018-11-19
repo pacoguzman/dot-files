@@ -124,7 +124,7 @@ alias p='git pull --rebase'
 # force-with-lease is not as safe as expected
 # https://developer.atlassian.com/blog/2015/04/force-with-lease/
 # alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease ..." && git pull && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
-alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD) ..." && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
+alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD)" && git push origin $(git rev-parse --abbrev-ref HEAD)'
 
 # Editor tricks
 alias e='atom .'
