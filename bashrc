@@ -27,9 +27,7 @@ shopt -s histappend
 alias h='history|g'
 
 export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
 # Elixir
@@ -42,3 +40,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Git
 export GIT_EDITOR=$EDITOR
 export LANGUAGE='en_US.UTF-8'
+
+# https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c
+# ulimit -n 200000
+# ulimit -u 2048
