@@ -37,7 +37,7 @@ fi
 
 # asdf https://github.com/asdf-vm/asdf
 # Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
-if [ -d $HOME/.rbenv ]; then
+if [ -d $HOME/.asdf ]; then
   source $HOME/.asdf/asdf.sh
   source $HOME/.asdf/completions/asdf.bash
 fi
