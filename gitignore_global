@@ -1,9 +1,9 @@
 .DS_Store
 Thumbs.db
+
 ._*
 build/*
 pkg/*
-.svn
 *.pbxuser
 *.move1v3
 *~
@@ -12,7 +12,6 @@ nbproject/*
 pkg/*
 tmp/**/*
 .svn
-.bundle
 .idea
 .idea/*
 *.sublime*
@@ -21,6 +20,8 @@ tmp/**/*
 *.zip
 .com.apple.*
 .*.sw?
+
+.bundle
 db/elasticsearch
 things/*
 sandi_meter
@@ -28,7 +29,11 @@ sandi_meter/*
 .rubocop_local.yml
 .byebug_history
 .env.production
+
 httpie.md
 httpies
 httpies/*
+
 .elixir_ls
+
+.vscode
