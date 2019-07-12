@@ -52,8 +52,6 @@
   quotepath = false
   autocrlf = input
   pager = diff-so-fancy | less --tabs=4 -RFX
-[pull]
-  rebase = preserve
 [push]
   default = simple
 [help]
