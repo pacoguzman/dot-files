@@ -1,34 +1,24 @@
-source ~/.git-completion.bash
-source ~/.bashrc
-source ~/.bash_prompt
 source ~/.gitaliases
 source ~/.aliases
 
-# complete -C ~/.rake-completion.rb -o default rake
+export IRBRC="$HOME/.irbrc"
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export CLICOLOR=1
+export EDITOR='vim'
+export VISUAL=$EDITOR
 
-# readline settings
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
+# Elixir
 
-# Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+export ERL_AFLAGS="-kernel shell_history enabled"
 
-# history (bigger size, no duplicates, always append):
-export HISTCONTROL=erasedups
-export HISTSIZE=10000
-shopt -s histappend
-
-alias h='history|g'
+# Git
+export GIT_EDITOR=$EDITOR
+export LANGUAGE='en_US.UTF-8'
 
 # dot-files bin
 export PATH=$HOME/.bin:$PATH
 
-# RBENV
-if [ -d $HOME/.rbenv ]; then
-  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-fi
+eval "$(starship init zsh)"
 
 # Postgres.app
 if [ -d /Applications/Postgres.app ]; then
@@ -49,10 +39,10 @@ fi
 
 # asdf https://github.com/asdf-vm/asdf
 # Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
-if [ -d $HOME/.asdf ]; then
-  source $HOME/.asdf/asdf.sh
-  source $HOME/.asdf/completions/asdf.bash
-fi
+#if [ -d $HOME/.asdf ]; then
+#   source $HOME/.asdf/asdf.sh
+#   # source $HOME/.asdf/completions/asdf.bash
+#fi
 
 # gcloud
 export CLOUDSDK_PYTHON=$(which python)

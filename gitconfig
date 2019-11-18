@@ -27,8 +27,8 @@
   dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
   up = pull --rebase --autostash
   patch = !git --no-pager diff --no-color
-  push-and-create-mr = push origin HEAD -o merge_request.create
-  push-and-merge-on-succeed = push origin HEAD -o merge_request.create -o merge_request.merge_when_pipeline_succeeds
+  push-and-create-mr = push origin HEAD -o merge_request.create -o merge_request.remove_source_branch
+  push-and-merge-on-succeed = push origin HEAD -o merge_request.create -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
 [apply]
   whitespace = nowarn
 [color]
