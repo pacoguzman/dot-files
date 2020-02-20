@@ -23,6 +23,8 @@ alias grc='git rebase --continue'
 alias grs='git rebase --skip'
 # git_file_history gfh path/to/file
 alias gfh='git log --follow --'
+# git_file_history with string matching
+# alias gfhm='git log -Sstring --follow -p -- path/to/file'
 alias sha='git rev-parse HEAD | pbcopy'
 
 alias good='git bisect good'
