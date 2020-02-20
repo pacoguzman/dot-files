@@ -28,3 +28,5 @@ export LANGUAGE='en_US.UTF-8'
 # https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c
 # ulimit -n 200000
 # ulimit -u 2048
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
