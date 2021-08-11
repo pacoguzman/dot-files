@@ -17,11 +17,10 @@ export LANGUAGE='en_US.UTF-8'
 
 # dot-files bin
 export PATH=$HOME/.bin:$PATH
-
-eval "$(starship init zsh)"
-
 export PATH=/usr/local/sbin:$PATH
 
+export STARSHIP_CONFIG=~/config/starship.toml
+eval "$(starship init zsh)"
 
 export DEV_HOME="$HOME/dev"
 
