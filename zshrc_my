@@ -39,3 +39,6 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 # https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
