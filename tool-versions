@@ -1,5 +1,5 @@
-elixir 1.11.3
-erlang 22.3.1
+elixir 1.12.2-otp-24
+erlang 24.0.3
 python 2.7.15
 golang 1.16
 rust 1.51.0
