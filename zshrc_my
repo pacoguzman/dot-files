@@ -22,8 +22,6 @@ eval "$(starship init zsh)"
 
 export PATH=/usr/local/sbin:$PATH
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 export DEV_HOME="$HOME/dev"
 
