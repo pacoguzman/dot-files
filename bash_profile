@@ -30,16 +30,7 @@ if [ -d $HOME/.rbenv ]; then
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 fi
 
-# Postgres.app
-if [ -d /Applications/Postgres.app ]; then
-  export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH"
-fi
-
 export PATH=/usr/local/sbin:$PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export DEV_HOME="$HOME/dev"
 
 ### Bebanjo Tool Belt
