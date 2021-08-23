@@ -6,10 +6,17 @@ export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 export EDITOR='vim'
 export VISUAL=$EDITOR
+export HISTCONTROL=ignoredups:erasedups # no duplicate entries
+
+# Spotlight (disabling)
+sudo mdutil -i off
+# sudo mdutil -i on
 
 # Elixir
-
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Git
 export GIT_EDITOR=$EDITOR
@@ -21,6 +28,9 @@ export PATH=/usr/local/sbin:$PATH
 
 export STARSHIP_CONFIG=~/config/starship.toml
 eval "$(starship init zsh)"
+
+# Add Visual Studio Code (code) - https://code.visualstudio.com/docs/setup/mac
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 export DEV_HOME="$HOME/dev"
 
