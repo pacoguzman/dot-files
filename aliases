@@ -27,9 +27,6 @@ alias systail='tail -f /var/log/system.log'
 # useful command to find what you should be aliasing:
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
-# docker stuff
-alias stop-all-dockers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-
 # rails stuff
 alias l='lookup'
 alias log='tail -f -0 ./log/*.log &'
@@ -125,4 +122,13 @@ alias p='git pull --rebase'
 alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD)" && git push origin $(git rev-parse --abbrev-ref HEAD)'
 
 # Editor tricks
-alias e='atom .'
+alias e='code .'
+
+# docker stuff
+alias stop-all-dockers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias rmi-all-dockers="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi"
+alias prune-dockers='docker system prune --force --volumes'
+
+# Kubernetes
+alias k='kubectl'
+## Try again some kubeselect magic
