@@ -42,3 +42,7 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
+
+# exlude dependency folders from time machine https://github.com/stevegrunwell/asimov
+# to be executed everyday
+# > sudo brew services start asimov
