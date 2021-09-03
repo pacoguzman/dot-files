@@ -37,3 +37,4 @@ httpies/*
 .elixir_ls
 
 .vscode
+*.code-workspace
