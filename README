@@ -1,4 +1,30 @@
-Copyright (c) 2018 Paco Guzmán
+#
+
+All the programming things I use
+
+# Install
+
+
+Install homebrew
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Install homebrew bundle to install all the brews and casks and load Brewfile
+
+```sh
+brew bundle
+```
+
+Install the rest of the things
+
+```sh
+rake install
+```
+
+
+Copyright (c) 2021 Paco Guzmán
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
