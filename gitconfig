@@ -1,6 +1,6 @@
 [user]
-  name = Paco Guzman
-  email = pacoguzmanp@gmail.com
+	name = Paco Guzmán
+	email = pacoguzman@users.noreply.github.com
 [merge]
   summary = true
   tool = opendiff
