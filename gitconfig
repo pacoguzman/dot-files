@@ -75,3 +75,5 @@
   path = ~/.gitconfig-cabify
 [includeIf "gitdir:~/dev/github/bebanjo/"]
   path = ~/.gitconfig-bebanjo
+[pull]
+	ff = only
