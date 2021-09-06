@@ -23,6 +23,12 @@ Install the rest of the things
 rake install
 ```
 
+Disable Spotlight to be executed once
+
+```sh
+sudo mdutil -i off
+```
+
 
 Copyright (c) 2021 Paco Guzmán
 
