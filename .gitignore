@@ -1,2 +1,9 @@
 config/configstore
 config/gcloud
+config/gh
+config/goldencheetah.org
+config/icedtea-web
+# Could be interesting for the future
+config/iterm2
+config/op
+config/yarn
