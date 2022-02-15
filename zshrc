@@ -68,7 +68,7 @@ HIST_STAMPS="yyyy/mm/dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rbenv asdf brew docker docker-compose fzf gcloud history httpie kubectl terraform zsh-autosuggestions)
+plugins=(git rbenv asdf brew docker docker-compose fzf gcloud history httpie kubectl minikube terraform zsh-autosuggestions)
 
 # If the above didn't help or you want to skip the verification of insecure directories you can set the variable ZSH_DISABLE_COMPFIX to
 # "true" before oh-my-zsh is sourced in your zshrc file.
