@@ -38,3 +38,12 @@ httpies/*
 
 .vscode
 *.code-workspace
+
+.monokle
+
+# vscode local history extensions
+.history
+
+# My private notes inside repos
+
+.priv_notes.md
