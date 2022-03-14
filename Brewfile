@@ -119,3 +119,19 @@ cask "iterm2"
 cask "lens"
 cask "skitch"
 cask "the-unarchiver"
+
+brew "awscli" # Basic AWS
+cask "postman" # Stuart Tooling
+brew "direnv" # Stuart tooling
+brew "mysql" # Stuart tooling
+brew "postgres" # for pg gem
+brew "libpqxx" # for pg gem
+brew "cmake" # for H3 gem
+brew "clang-format" # for H3 gem development
+brew "lcov" # for H3 gem development
+brew "doxygen" # for H3 gem development
+brew "v8-315" # required by TheRubyRacer
+brew "pkg-config" # for rugged gem
+brew "imagemagick@6" # for rmagick gem / run `brew link imagemagick@6 --force`
+tap "mutagen-io/mutagen"
+brew "mutagen-io/mutagen/mutagen-beta" # Stuart tooling

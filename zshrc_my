@@ -1,4 +1,8 @@
+# shellcheck shell=bash
+
+# shellcheck source=~/.gitaliases
 source ~/.gitaliases
+# shellcheck source=~/.aliases
 source ~/.aliases
 
 export IRBRC="$HOME/.irbrc"
@@ -16,17 +20,22 @@ export HISTCONTROL=ignoredups:erasedups # no duplicate entries
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Ruby
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export RUBY_CONFIGURE_OPTS
 
 # Git
 export GIT_EDITOR=$EDITOR
 export LANGUAGE='en_US.UTF-8'
 
+# locale - https://github.com/ohmyzsh/ohmyzsh/issues/7558
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # dot-files bin
 export PATH=$HOME/.bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
-export STARSHIP_CONFIG=~/config/starship.toml
+export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
 # Add Visual Studio Code (code) - https://code.visualstudio.com/docs/setup/mac
@@ -34,25 +43,51 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 export DEV_HOME="$HOME/dev"
 
+# gcloud
+# export CLOUDSDK_PYTHON=$(which python)
+# export PATH="${DEV_HOME}/google-cloud-sdk/bin:$PATH"
+
+# https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
+# shellcheck disable=SC1090
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# shellcheck disable=SC2203,SC1090
+[[ ${commands[kubectl]} ]] && source <(kubectl completion zsh)
+
+# shellcheck disable=SC2203,SC1090
+[[ ${commands[kustomize]} ]] && source <(kustomize completion zsh)
+
+# shellcheck disable=SC2203,SC1090
+[[ ${commands[minikube]} ]] && source <(minikube completion zsh)
+
+# Not yet as it's not working as expected
+# && minikube status > /dev/null && eval $(minikube docker-env)
+
+# to replace docker-desktop with minikube
+# https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469
+# https://gist.github.com/protosam/11800faea25a3f89af9ece4f11c72f1d
+
+# shellcheck disable=SC2203,SC1090
+# Check if ready in newer versions as explaiend on the doc
+# [[ ${commands[nerdctl]} ]] && source <(nerdctl completion zsh)
+
+# shellcheck disable=SC2203,SC1090
+[[ ${commands[op]} ]] && source <(op completion zsh)
+
+export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
+
+# Argo rollouts is kidding about this https://argoproj.github.io/argo-rollouts/generated/kubectl-argo-rollouts/kubectl-argo-rollouts_completion/
+# [[ ${commands[kubectl-argo-rollouts]} ]] && source <(kubectl-argo-rollouts completion zsh)
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# exlude dependency folders from time machine https://github.com/stevegrunwell/asimov
+# to be executed everyday
+# > sudo brew services start asimov
+
 ### Bebanjo Tool Belt
 if [ -d "${DEV_HOME}/github/bebanjo/bj" ]; then
   eval "$($DEV_HOME/github/bebanjo/bj/bin/bj init -)"
 fi
 
-# gcloud
-export CLOUDSDK_PYTHON=$(which python)
-export PATH="${DEV_HOME}/google-cloud-sdk/bin:$PATH"
-
-# Add Visual Studio Code (code) - https://code.visualstudio.com/docs/setup/mac
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-
-# https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-
-export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
-
-# exlude dependency folders from time machine https://github.com/stevegrunwell/asimov
-# to be executed everyday
-# > sudo brew services start asimov
+eval "$(direnv hook zsh)"
