@@ -1,1 +1,21 @@
 command_timeout = 1500
+
+[gcloud]
+disabled = true
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✖](bold red)"
+
+[[battery.display]]
+threshold = 99
+
+[kubernetes]
+format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](bold green) '
+disabled = false
+
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+".*/openshift-cluster/.*" = "openshift"
+"gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
