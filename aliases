@@ -115,6 +115,8 @@ alias gdk-ee='cd ~/dev/gitlab/gitlab/gdk-ee/'
 alias mysql-optimize='mysqlcheck -o -u root --all-databases'
 
 # Git Aliases
+# https://github.com/rowanj/gitx/issues/210#issuecomment-20466749
+alias gitx="open -a /Applications/GitX.app ."
 alias p='git pull --rebase'
 # force-with-lease is not as safe as expected
 # https://developer.atlassian.com/blog/2015/04/force-with-lease/
@@ -125,10 +127,22 @@ alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD)" &
 alias e='code .'
 
 # docker stuff
-alias stop-all-dockers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-alias rmi-all-dockers="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi"
-alias prune-dockers='docker system prune --force --volumes'
+# TODO: this is not fully compatible yet
+# alias docker='nerdctl'
+alias docker-stop-all='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias docker-rmi-all="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi"
+alias docker-prune='docker system prune --force --volumes'
+alias docker-image-size="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h -r | column -t"
 
 # Kubernetes
 alias k='kubectl'
 ## Try again some kubeselect magic
+
+# Rubocop
+
+alias rubocoplocal="git fetch && git diff-tree -r --no-commit-id --name-only develop@\{u\} head | xargs ls -1 2>/dev/null | xargs bundle exec rubocop --force-exclusion"
+
+# > rubocopsince 1.month -a
+rubocopsince() {
+    git fetch && git log --pretty=format: --name-only --since="$1" | sort | uniq | xargs ls -1 2>/dev/null | xargs bundle exec rubocop --force-exclusion "${@:2}"
+}

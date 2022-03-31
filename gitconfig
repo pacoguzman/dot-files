@@ -2,8 +2,10 @@
 	name = Paco Guzmán
 	email = pacoguzman@users.noreply.github.com
 [merge]
-  summary = true
-  tool = opendiff
+  tool = /usr/local/bin/mine
+[mergetool "rubymine"]
+  cmd = /usr/local/bin/mine merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+  trustExitCode = true
 [alias]
   br = branch
   co = checkout
@@ -41,15 +43,19 @@
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
+#[diff]
+#  meta = "227"
+#  frag = "magenta bold"
+#  commit = "227 bold"
+#  old = "red bold"
+#  new = "green bold"
+#  whitespace = "red reverse"
 [diff]
-  meta = "227"
-  frag = "magenta bold"
-  commit = "227 bold"
-  old = "red bold"
-  new = "green bold"
-  whitespace = "red reverse"
+	tool = /usr/local/bin/mine
+[difftool "idea"]
+  cmd = /usr/local/bin/mine diff (cd (dirname "$LOCAL"); and pwd)/(basename "$LOCAL") (cd (dirname "$REMOTE"); and pwd)/(basename "$REMOTE")
 [core]
-  excludesfile = ~/.gitignore_global
+	excludesfile = /Users/f.guzman/.gitignore_global
   whitespace = fix
   quotepath = false
   autocrlf = input
@@ -69,11 +75,13 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
-[includeIf "gitdir:~/dev/github/cabify/"]
-  path = ~/.gitconfig-cabify
-[includeIf "gitdir:~/dev/gitlab.otters.xyz/"]
-  path = ~/.gitconfig-cabify
-[includeIf "gitdir:~/dev/github/bebanjo/"]
-  path = ~/.gitconfig-bebanjo
 [pull]
 	ff = only
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[init]
+	defaultBranch = main
