@@ -17,10 +17,28 @@ Install homebrew bundle to install all the brews and casks and load Brewfile
 brew bundle
 ```
 
+Install oh-my-zsh
+
+```sh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) plugin
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
 Install the rest of the things
 
 ```sh
 rake install
+```
+
+Install gitx from local formula (official one is missing) -> https://github.com/gitx/gitx/issues/284
+
+```sh
+brew install --build-from-source ./formula/gitx-gitx.rb
 ```
 
 Disable Spotlight to be executed once
