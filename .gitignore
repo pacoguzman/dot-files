@@ -7,3 +7,7 @@ config/icedtea-web
 config/iterm2
 config/op
 config/yarn
+config/htop
+config/iex
+
+.history
