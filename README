@@ -50,7 +50,7 @@ sudo mdutil -i off
 Kubernetes and Krew plugins
 
 ```sh
-kubectl krew install stern ctx ns neat tree
+kubectl krew install stern ctx ns neat tree allctx
 ```
 
 iTerm changes for glyphs and starship prompt

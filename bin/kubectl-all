@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# https://runbooks.fonoa.io/general/security/kubernetes-access/#bonus-execute-kubectl-on-all-clusters
+# Simplified version of https://github.com/onatm/kubectl-allctx
+for ctx in $(kubectl config view -o json | jq --raw-output '.contexts[] | select(.name | test("fonoa.")) | .name'); do
+  echo "---------- ${ctx} ----------"
+  kubectl --context "${ctx}" "${@}"
+  echo ""
+done
