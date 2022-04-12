@@ -55,7 +55,7 @@
 [difftool "idea"]
   cmd = /usr/local/bin/mine diff (cd (dirname "$LOCAL"); and pwd)/(basename "$LOCAL") (cd (dirname "$REMOTE"); and pwd)/(basename "$REMOTE")
 [core]
-	excludesfile = /Users/f.guzman/.gitignore_global
+	excludesfile = ~/.gitignore_global
   whitespace = fix
   quotepath = false
   autocrlf = input
