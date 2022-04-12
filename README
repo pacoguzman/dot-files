@@ -47,6 +47,11 @@ Disable Spotlight to be executed once
 sudo mdutil -i off
 ```
 
+Kubernetes and Krew plugins
+
+```sh
+kubectl krew install stern ctx ns neat tree
+```
 
 iTerm changes for glyphs and starship prompt
 

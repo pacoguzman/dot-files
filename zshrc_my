@@ -81,6 +81,9 @@ export KUBECTL_EXTERNAL_DIFF="dyff between --omit-header --set-exit-code"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# shellcheck disable=SC2203,SC1090
+[[ ${commands[stern]} ]] && source <(stern --completion=zsh)
+
 # exlude dependency folders from time machine https://github.com/stevegrunwell/asimov
 # to be executed everyday
 # > sudo brew services start asimov
