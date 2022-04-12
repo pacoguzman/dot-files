@@ -85,9 +85,11 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # to be executed everyday
 # > sudo brew services start asimov
 
-### Bebanjo Tool Belt
-if [ -d "${DEV_HOME}/github/bebanjo/bj" ]; then
-  eval "$($DEV_HOME/github/bebanjo/bj/bin/bj init -)"
+# asdf https://github.com/asdf-vm/asdf
+# Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
+if [ -d "${HOME}/.asdf" ]; then
+  # shellcheck disable=SC1090
+  source /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 eval "$(direnv hook zsh)"
