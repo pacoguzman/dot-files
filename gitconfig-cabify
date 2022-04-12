@@ -1,7 +1,0 @@
-[user]
-  name = Paco Guzmán (BE Programmer)
-  email = paco.guzman@cabify.com
-[url "git@github.com:cabify"]
-  insteadOf = https://github.com/cabify
-[url "git@gitlab.otters.xyz:"]
-  insteadOf = https://gitlab.otters.xyz/
