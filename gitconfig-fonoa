@@ -1,0 +1,5 @@
+[user]
+  name = Paco Guzmán
+  email = francisco.guzman@fonoa.com
+[url "git@github.com:Fonoa-Tech"]
+  insteadOf = https://github.com/Fonoa-Tech
