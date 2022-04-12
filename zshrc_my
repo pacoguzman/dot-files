@@ -92,7 +92,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
 if [ -d "${HOME}/.asdf" ]; then
   # shellcheck disable=SC1090
-  source /opt/homebrew/opt/asdf/libexec/asdf.sh
+  source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 fi
 
 eval "$(direnv hook zsh)"
