@@ -32,21 +32,12 @@ fi
 export PATH=/usr/local/sbin:$PATH
 export DEV_HOME="$HOME/dev"
 
-### Bebanjo Tool Belt
-if [ -d "${DEV_HOME}/github/bebanjo/bj" ]; then
-  eval "$($DEV_HOME/github/bebanjo/bj/bin/bj init -)"
-fi
-
 # asdf https://github.com/asdf-vm/asdf
 # Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
 if [ -d $HOME/.asdf ]; then
   source $HOME/.asdf/asdf.sh
   source $HOME/.asdf/completions/asdf.bash
 fi
-
-# gcloud
-# export CLOUDSDK_PYTHON=$(which python)
-# export PATH="${DEV_HOME}/google-cloud-sdk/bin:$PATH"
 
 # Add Visual Studio Code (code)
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"

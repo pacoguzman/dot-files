@@ -43,10 +43,6 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 export DEV_HOME="$HOME/dev"
 
-# gcloud
-# export CLOUDSDK_PYTHON=$(which python)
-# export PATH="${DEV_HOME}/google-cloud-sdk/bin:$PATH"
-
 # https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
 # shellcheck disable=SC1090
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
