@@ -29,6 +29,14 @@ Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/b
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
+Install [zsh-completions](https://github.com/zsh-users/zsh-completions#oh-my-zsh) plugin as used for some other plugins
+
+```sh
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+```
+
+Add fpath check the install reference
+
 Install the rest of the things
 
 ```sh
