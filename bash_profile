@@ -1,7 +1,6 @@
 source ~/.git-completion.bash
 source ~/.bashrc
 source ~/.bash_prompt
-source ~/.gitaliases
 source ~/.aliases
 
 # complete -C ~/.rake-completion.rb -o default rake

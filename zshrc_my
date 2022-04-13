@@ -1,7 +1,5 @@
 # shellcheck shell=bash
 
-# shellcheck source=~/.gitaliases
-source ~/.gitaliases
 # shellcheck source=~/.aliases
 source ~/.aliases
 
@@ -26,6 +24,8 @@ export RUBY_CONFIGURE_OPTS
 # Git
 export GIT_EDITOR=$EDITOR
 export LANGUAGE='en_US.UTF-8'
+# shellcheck disable=SC1090
+[ -f ~/.git-completion.zsh ] && source ~/.git-completion.zsh
 
 # locale - https://github.com/ohmyzsh/ohmyzsh/issues/7558
 export LANG=en_US.UTF-8
