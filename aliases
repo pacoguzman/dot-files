@@ -10,7 +10,6 @@ fi
 
 alias xopen='xdg-open'
 
-alias mvim='open -a /Applications/MacVim.app'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -26,90 +25,30 @@ alias top='top -o cpu'
 alias systail='tail -f /var/log/system.log'
 # useful command to find what you should be aliasing:
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
-
-# rails stuff
-alias l='lookup'
-alias log='tail -f -0 ./log/*.log &'
-alias stoplog='killall tail'
-alias ss='ruby ./script/server'
-alias sc='ruby ./script/console'
-alias cdm='cap deploy deploy:migrate'
-alias model='script/generate model'
-alias controller='script/generate controller'
-alias migration='script/generate migration'
-alias migrate='rake db:migrate && rake db:test:clone'
-alias rollback='rake db:rollback'
-alias dtp='rake db:test:prepare'
-alias redo="rake db:migrate && rake db:rollback"
-alias sr='rake spec'
-alias rt='rake test'
-alias restart='touch tmp/restart.txt'
-alias startpg='sudo su postgres'
-alias t="rake test"
-alias s="rake spec"
-alias format-patch="git format-patch HEAD^1..HEAD"
-
 alias rfind="find . -name *.rb | xargs grep -n"
 
+# git
+alias format-patch="git format-patch HEAD^1..HEAD"
+
+# Bundler
 alias ber="bundle exec rspec"
-alias bec="bundle exec cucumber"
 alias be="bundle exec"
-alias ss='be rails s'
-alias sst='be rails s thin'
-alias sc='be rails c '
 alias bake='be rake '
-alias anote='be annotate -p before  -s -e [tests,fixtures]'
+
+# Rubocop
 alias pr-rubo='pronto run -f text -r rubocop -c origin/stable'
 alias cop='rubocop `git diff --name-only master..HEAD`'
+alias rubocoplocal="git fetch && git diff-tree -r --no-commit-id --name-only develop@\{u\} head | xargs ls -1 2>/dev/null | xargs bundle exec rubocop --force-exclusion"
 
-alias def="ack 'def $1'"
-alias class="ack 'class $1'"
-alias module="ack 'module $1'"
-
-alias start_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias stop_pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
-alias start_redis='redis-server /usr/local/etc/redis.conf'
-alias start_mongo="screen -dmS mongo rake mongo:start"
+# > rubocopsince 1.month -a
+rubocopsince() {
+    git fetch && git log --pretty=format: --name-only --since="$1" | sort | uniq | xargs ls -1 2>/dev/null | xargs bundle exec rubocop --force-exclusion "${@:2}"
+}
 
 alias logs='find ~/dev -type f -name "*.log" -print'
 alias rm_logs='find ~/dev -type f -name "log*/*.log" -print | xargs rm'
 
 alias rr='rbenv rehash'
-
-# BeBanjo Apps
-alias bebanjo_apps='cd ~/dev/github/bebanjo'
-alias sequence='cd ~/dev/github/bebanjo/sequence'
-alias panorama='cd ~/dev/github/bebanjo/panorama'
-alias kanhub='cd ~/dev/github/bebanjo/kanhub'
-alias tron='cd ~/dev/github/bebanjo/tron'
-alias movida='cd ~/dev/github/bebanjo/movida'
-alias bebanjo-rum='cd ~/dev/github/bebanjo/bebanjo-rum'
-alias bebanjo-search='cd ~/dev/github/bebanjo/bebanjo-search'
-alias bebanjo-sidekiq='cd ~/dev/github/bebanjo/bebanjo-sidekiq'
-
-# Cabify
-
-alias cabify_apps='cd ~/dev/github/cabify'
-alias cdk='cd ~/dev/github/cabify/cdk'
-alias cabify_ruby-core='cd ~/dev/github/cabify/product/monoliths/ruby-core'
-alias cabify_auth='cd ~/dev/github/cabify/product/core/auth'
-alias cabify_rubocop='git diff master --numstat | cut -f 3 | grep "\.rb$" | xargs ls 2>/dev/null | xargs rubocop -a'
-
-# JobAndTalentApps
-
-alias jt-web_core='cd ~/dev/github/jobandtalent/web_core'
-alias jt-suggestive='cd ~/dev/github/jobandtalent/suggestivev'
-alias jt-imports='cd ~/dev/github/jobandtalent/imports'
-alias jt-geo_service='cd ~/dev/github/jobandtalent/geo_service'
-
-# GitLab
-
-alias gitlab-ce='cd ~/dev/gitlab/gitlab/gdk/gitlab'
-alias gitlab-ee='cd ~/dev/gitlab/gitlab/gdk-ee/gitlab'
-alias gdk='cd ~/dev/gitlab/gitlab/gdk/'
-alias gdk-ee='cd ~/dev/gitlab/gitlab/gdk-ee/'
-
-# My Apps
 
 # Apps tricks
 alias mysql-optimize='mysqlcheck -o -u root --all-databases'
@@ -133,16 +72,3 @@ alias docker-stop-all='docker stop $(docker ps -a -q) && docker rm $(docker ps -
 alias docker-rmi-all="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi"
 alias docker-prune='docker system prune --force --volumes'
 alias docker-image-size="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h -r | column -t"
-
-# Kubernetes
-alias k='kubectl'
-## Try again some kubeselect magic
-
-# Rubocop
-
-alias rubocoplocal="git fetch && git diff-tree -r --no-commit-id --name-only develop@\{u\} head | xargs ls -1 2>/dev/null | xargs bundle exec rubocop --force-exclusion"
-
-# > rubocopsince 1.month -a
-rubocopsince() {
-    git fetch && git log --pretty=format: --name-only --since="$1" | sort | uniq | xargs ls -1 2>/dev/null | xargs bundle exec rubocop --force-exclusion "${@:2}"
-}
