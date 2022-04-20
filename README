@@ -43,6 +43,12 @@ Install the rest of the things
 rake install
 ```
 
+Install asdf plugins
+
+```sh
+cut -d' ' -f1 ~/.tool-versions | xargs -i asdf plugin add  {}
+```
+
 Install gitx from local formula (official one is missing) -> https://github.com/gitx/gitx/issues/284
 
 ```sh
