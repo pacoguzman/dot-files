@@ -44,6 +44,10 @@ httpies/*
 # vscode local history extensions
 .history
 
+# Terraform
+.terraform.lock.hcl
+.terraform
+
 # My private notes inside repos
 
 .priv_notes.md
