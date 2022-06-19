@@ -73,7 +73,6 @@ brew "procs"
 brew "pwgen"
 brew "qt", link: false
 brew "ruby-build"
-brew "rbenv"
 brew "ruby-install"
 brew "s3cmd"
 brew "sbcl"

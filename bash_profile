@@ -11,7 +11,7 @@ bind "set show-all-if-ambiguous On" # this allows you to automatically show comp
 
 # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 # history (bigger size, no duplicates, always append):
@@ -23,11 +23,6 @@ alias h='history|g'
 
 # dot-files bin
 export PATH=$HOME/.bin:$PATH
-
-# RBENV
-if [ -d $HOME/.rbenv ]; then
-  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-fi
 
 export PATH=/usr/local/sbin:$PATH
 export DEV_HOME="$HOME/dev"

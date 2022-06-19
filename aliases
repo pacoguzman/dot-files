@@ -1,4 +1,3 @@
-# fucking useful shit
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -19,12 +18,9 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 alias ll='ls -lah'
 alias ..='cd ..;' # can then do .. .. .. to move up multiple directories.
 alias ...='.. ..'
-alias g='grep -i'  #case insensitive grep
+alias g='grep -i'                           #case insensitive grep
 alias ducks='du -cks * | sort -rn|head -11' # Lists the size of all the folders$
 alias top='top -o cpu'
-alias systail='tail -f /var/log/system.log'
-# useful command to find what you should be aliasing:
-alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 alias rfind="find . -name *.rb | xargs grep -n"
 
 # git
@@ -48,8 +44,6 @@ rubocopsince() {
 alias logs='find ~/dev -type f -name "*.log" -print'
 alias rm_logs='find ~/dev -type f -name "log*/*.log" -print | xargs rm'
 
-alias rr='rbenv rehash'
-
 # Apps tricks
 alias mysql-optimize='mysqlcheck -o -u root --all-databases'
 
@@ -57,17 +51,12 @@ alias mysql-optimize='mysqlcheck -o -u root --all-databases'
 # https://github.com/rowanj/gitx/issues/210#issuecomment-20466749
 alias gitx="open -a /Applications/GitX.app ."
 alias p='git pull --rebase'
-# force-with-lease is not as safe as expected
-# https://developer.atlassian.com/blog/2015/04/force-with-lease/
-# alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease ..." && git pull && git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease'
 alias P='echo "git pull && git push origin $(git rev-parse --abbrev-ref HEAD)" && git push origin $(git rev-parse --abbrev-ref HEAD)'
 
 # Editor tricks
 alias e='code .'
 
 # docker stuff
-# TODO: this is not fully compatible yet
-# alias docker='nerdctl'
 alias docker-stop-all='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias docker-rmi-all="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi"
 alias docker-prune='docker system prune --force --volumes'
