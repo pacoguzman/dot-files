@@ -1,11 +1,6 @@
 [user]
 	name = Paco Guzmán
 	email = pacoguzman@users.noreply.github.com
-[merge]
-  tool = /usr/local/bin/mine
-[mergetool "rubymine"]
-  cmd = /usr/local/bin/mine merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
-  trustExitCode = true
 [alias]
   br = branch
   co = checkout
@@ -50,10 +45,6 @@
 #  old = "red bold"
 #  new = "green bold"
 #  whitespace = "red reverse"
-[diff]
-	tool = /usr/local/bin/mine
-[difftool "idea"]
-  cmd = /usr/local/bin/mine diff (cd (dirname "$LOCAL"); and pwd)/(basename "$LOCAL") (cd (dirname "$REMOTE"); and pwd)/(basename "$REMOTE")
 [core]
 	excludesfile = ~/.gitignore_global
   whitespace = fix
@@ -77,12 +68,6 @@
   process = git-lfs filter-process
 [pull]
 	ff = only
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [init]
 	defaultBranch = main
 [includeIf "gitdir:~/dev/github/Fonoa-Tech/**"]
