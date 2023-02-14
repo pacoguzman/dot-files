@@ -47,6 +47,7 @@
 	ff = only
 [init]
 	defaultBranch = main
+	templateDir = ~/.git-template
 [includeIf "gitdir:~/dev/github/Fonoa-Tech/**"]
   path = ~/.gitconfig-fonoa
 [diff]
