@@ -51,6 +51,10 @@ httpies/*
 .terraform.lock.hcl
 .terraform
 
+# Go (multi-module repositories)
+go.work
+go.work.sum
+
 # My private notes inside repos
 
 .priv_notes.md

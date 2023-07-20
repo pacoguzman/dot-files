@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/s5cmd s5cmd
+
 # shellcheck source=~/.aliases
 source ~/.aliases
 
@@ -87,6 +90,11 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if [ -d "${HOME}/.asdf" ]; then
   # shellcheck disable=SC1090
   source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
+
+  export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 fi
+
+# we need point direnv to our bash to properly hook zsh
+export DIRENV_BASH="$(which bash)"
 
 eval "$(direnv hook zsh)"
