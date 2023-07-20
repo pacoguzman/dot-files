@@ -28,6 +28,7 @@
   quotepath = false
   autocrlf = input
   pager = diff-so-fancy | less --tabs=4 -RFX
+  hooksPath = ~/.config/git-template/hooks
 [push]
   default = simple
 [help]
@@ -47,7 +48,8 @@
 	ff = only
 [init]
 	defaultBranch = main
-	templateDir = ~/.git-template
+  # Suggested by pre-commit but we instead just use core.hooksPath
+	# templateDir = ~/.config/git-template
 [includeIf "gitdir:~/dev/github/Fonoa-Tech/**"]
   path = ~/.gitconfig-fonoa
 [diff]

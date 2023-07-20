@@ -1,3 +1,6 @@
+# ignore files - https://github.com/secretlint/git-hooks/blob/master/.gitignore
+IGNORE_GLOBAL_HOOKS
+
 .DS_Store
 Thumbs.db
 
