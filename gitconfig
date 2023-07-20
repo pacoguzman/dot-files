@@ -60,3 +60,11 @@
 	tool = vscode
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[safe]
+	directory = .
+[url "git@github.com:"]
+	insteadOf = https://github.com/
