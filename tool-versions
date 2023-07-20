@@ -1,4 +1,16 @@
-golang 1.18
-fit 0.4.0
-vault 1.10.0+ent
-ruby 3.1.2
+golang 1.20.5
+fit 0.14.0
+vault 1.14.0+ent
+terraform 1.5.2
+azure-cli 2.50.0
+jmespath 0.2.1
+driftctl
+ruby 3.2.2
+dotnet-core 7.0.305
+golangci-lint 1.53.3
+redis-cli 7.0.11
+direnv 2.32.3
+jq 1.6
+minikube 1.30.1
+yq 4.34.1
+kustomize 5.0.3
