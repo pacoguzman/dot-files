@@ -1,5 +1,4 @@
 require 'irb/completion'
-require 'irb/ext/save-history'
 
 alias q exit
 
