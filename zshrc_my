@@ -90,13 +90,9 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 # to be executed everyday
 # > sudo brew services start asimov
 
-# asdf https://github.com/asdf-vm/asdf
-# Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
-if [ -d "${HOME}/.asdf" ]; then
-  # shellcheck disable=SC1090
-  source "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
-
-  export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+# brew info grep
+if [ -d $HOME/.asdf ]; then
+  PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 fi
 
 # we need point direnv to our bash to properly hook zsh
