@@ -22,49 +22,73 @@
   push-and-merge-on-succeed = push origin HEAD -o merge_request.create -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
 [apply]
   whitespace = nowarn
+[branch]
+  sort = -committerdate
+[column]
+  ui = auto
+[commit]
+	gpgsign = true
+  verbose = true
 [core]
-	excludesfile = ~/.gitignore_global
-  whitespace = fix
-  quotepath = false
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = ~/.gitignore_global
   hooksPath = ~/.config/git-template/hooks
-[push]
-  default = simple
-[help]
-  autocorrect = 1
-[pager]
-  color = true
-[status]
-  color = auto
-[rerere]
-  enabled = true
+  pager = diff-so-fancy | less --tabs=4 -RFX
+  quotepath = false
+  whitespace = fix
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  memonicPrefix = true
+  renames = true
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[fetch]
+  all = true
+  prune = true
+  pruneTags = true
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
-[pull]
-	ff = only
+[gpg]
+	program = gpg
+[help]
+  autocorrect = prompt
+[includeIf "gitdir:~/dev/github/Fonoa-Tech/**"]
+  path = ~/.gitconfig-fonoa
 [init]
 	defaultBranch = main
   # Suggested by pre-commit but we instead just use core.hooksPath
 	# templateDir = ~/.config/git-template
-[includeIf "gitdir:~/dev/github/Fonoa-Tech/**"]
-  path = ~/.gitconfig-fonoa
-[diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
 	tool = vscode
+  conflictStyle = zdiff3
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg
+[pager]
+  color = true
+[pull]
+	ff = only
+  rebase = true
+[push]
+  autoSetupRemote = true
+  default = simple
+  followTags = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[rerere]
+  enabled = true
+  autoupdate = true
 [safe]
 	directory = .
+[status]
+  color = auto
+[tag]
+  sort = -v:refname
 [url "git@github.com:"]
 	insteadOf = https://github.com/
