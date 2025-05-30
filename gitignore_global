@@ -58,3 +58,6 @@ go.work.sum
 # My private notes inside repos
 
 .priv_notes.md
+
+# Virtual Env on some repositories
+venv/*

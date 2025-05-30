@@ -1,6 +1,7 @@
 [user]
-	name = Paco Guzmán
-	email = pacoguzman@users.noreply.github.com
+	name = Paco Guzmán
+	email = pacoguzmanp@gmail.com
+	signingkey = F5E8DE55C21AA732
 [alias]
   br = branch
   co = checkout
@@ -90,5 +91,6 @@
   color = auto
 [tag]
   sort = -v:refname
+  gpgsign = true
 [url "git@github.com:"]
 	insteadOf = https://github.com/
