@@ -1,0 +1,8 @@
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+[window]
+startup_mode = "Maximized"
+
+[terminal]
