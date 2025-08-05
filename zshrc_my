@@ -7,7 +7,7 @@ complete -o nospace -C /opt/homebrew/bin/s5cmd s5cmd
 source ~/.aliases
 
 export IRBRC="$HOME/.irbrc"
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export GREP_OPTIONS='--color=auto' GREP_COLOR='mt=1;32'
 export CLICOLOR=1
 export EDITOR='vim'
 export VISUAL=$EDITOR
@@ -94,6 +94,8 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 if [ -d $HOME/.asdf ]; then
   PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 fi
+
+export GPG_TTY=$(tty)
 
 # we need point direnv to our bash to properly hook zsh
 export DIRENV_BASH="$(which bash)"

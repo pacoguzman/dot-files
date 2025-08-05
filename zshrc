@@ -107,3 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.zshrc_my
+
+# Created by `pipx` on 2024-11-14 14:00:37
+export PATH="$PATH:$HOME/.local/bin"
+# Created by asdf direnv hook
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
