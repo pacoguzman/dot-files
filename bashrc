@@ -3,7 +3,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export IRBRC="$HOME/.irbrc"
 
 export TERM="xterm-256color" # getting propercolors
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export GREP_OPTIONS='--color=auto' GREP_COLOR='mt=1;32'
 export CLICOLOR=1
 export EDITOR='vim'
 export VISUAL=$EDITOR
@@ -25,3 +25,5 @@ export LANGUAGE='en_US.UTF-8'
 # ulimit -u 2048
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"

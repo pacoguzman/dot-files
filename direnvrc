@@ -1,0 +1,4 @@
+# To extend direnv https://github.com/direnv/direnv/issues/249
+source_up_secure() {
+  eval "$(cd .. && env -uDIRENV_{DIR,FILE,WATCHES,DIFF} direnv export bash)"
+}
