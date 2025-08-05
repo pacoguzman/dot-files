@@ -17,6 +17,10 @@ discharging_symbol = '⚡ '
 threshold = 30
 style = 'bold red'
 
+[git_branch]
+symbol = '🌱 '
+ignore_branches = ['master', 'main']
+
 [kubernetes]
-format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](bold green) '
+format = 'on [⛵ ($user on )($cluster in )$context (\($namespace\))](bold green) '
 disabled = false
