@@ -3,9 +3,9 @@ awscli 2.27.25
 direnv 2.36.0
 dotnet-core 9.0.300
 fab 7.10.3
-fit 0.21.0
-golang 1.24.3
-golangci-lint 2.1.6
+fit 0.26.0
+golang 1.25.4
+golangci-lint 2.6.2
 goreleaser 2.9.0
 helm 3.18.1
 jmespath 0.2.1
@@ -16,17 +16,18 @@ kubeconform 0.7.0
 k9s 0.50.6
 minikube 1.36.0
 mongosh 2.5.1
-nodejs 24.1.0
-pnpm 9.15.5
-postgres 17.5
+nodejs 25.4.0
+pnpm 10.28.1
+postgres 18.1
 # python 3.12.3
 redis-cli 8.0.2
 ruby 3.4.4
 shellcheck 0.10.0
 stern 1.32.0
-terraform 1.12.1
+terraform 1.13.5
 tflint 0.58.0
-vault 1.19.5+ent
-yq 4.45.4
+vault 1.21.2
+yq 4.50.1
 buf 1.54.0
 rust 1.87.0
+k6 1.5.0

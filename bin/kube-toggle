@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+kube_dir="$HOME/.kube"
+config="$kube_dir/config"
+hidden="$kube_dir/config.hidden"
+
+mkdir -p "$kube_dir"
+
+show_status() {
+  if [[ -f "$config" && -f "$hidden" ]]; then
+    echo "Both $config and $hidden exist; access state is ambiguous." >&2
+    return 2
+  fi
+
+  if [[ -f "$config" ]]; then
+    echo "Kubernetes access ON ($config)."
+    return 0
+  fi
+
+  if [[ -f "$hidden" ]]; then
+    echo "Kubernetes access OFF ($hidden)."
+    return 1
+  fi
+
+  echo "No kubeconfig found at $config or $hidden." >&2
+  return 2
+}
+
+set_on() {
+  if [[ -f "$config" && -f "$hidden" ]]; then
+    echo "Both $config and $hidden exist; refusing to enable." >&2
+    exit 1
+  fi
+
+  if [[ -f "$config" ]]; then
+    echo "Kubernetes access already ON ($config)."
+    exit 0
+  fi
+
+  if [[ -f "$hidden" ]]; then
+    mv "$hidden" "$config"
+    echo "Kubernetes access ON ($config)."
+    exit 0
+  fi
+
+  echo "No kubeconfig found at $config or $hidden." >&2
+  exit 1
+}
+
+set_off() {
+  if [[ -f "$config" && -f "$hidden" ]]; then
+    echo "Both $config and $hidden exist; refusing to disable." >&2
+    exit 1
+  fi
+
+  if [[ -f "$hidden" ]]; then
+    echo "Kubernetes access already OFF ($hidden)."
+    exit 0
+  fi
+
+  if [[ -f "$config" ]]; then
+    mv "$config" "$hidden"
+    echo "Kubernetes access OFF ($hidden)."
+    exit 0
+  fi
+
+  echo "No kubeconfig found at $config or $hidden." >&2
+  exit 1
+}
+
+toggle() {
+  if [[ -f "$config" && -f "$hidden" ]]; then
+    echo "Both $config and $hidden exist; refusing to toggle." >&2
+    exit 1
+  fi
+
+  if [[ -f "$config" ]]; then
+    mv "$config" "$hidden"
+    echo "Kubernetes access OFF ($hidden)."
+    exit 0
+  fi
+
+  if [[ -f "$hidden" ]]; then
+    mv "$hidden" "$config"
+    echo "Kubernetes access ON ($config)."
+    exit 0
+  fi
+
+  echo "No kubeconfig found at $config or $hidden." >&2
+  exit 1
+}
+
+case "${1:-}" in
+  --on)
+    set_on
+    ;;
+  --off)
+    set_off
+    ;;
+  --status)
+    show_status
+    exit $?
+    ;;
+  --help|-h)
+    echo "Usage: kube-toggle [--on|--off|--status]"
+    echo ""
+    echo "Without flags, toggles access on/off."
+    ;;
+  "")
+    toggle
+    ;;
+  *)
+    echo "Usage: kube-toggle [--on|--off|--status]" >&2
+    exit 2
+    ;;
+esac
